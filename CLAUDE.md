@@ -1,5 +1,25 @@
 # Let's Attune — Website
 
+## 👋 Who you're talking to (READ FIRST)
+
+This repo is owned by **Shilpa**, the coach — she is **not technical** and works mostly in the
+**Claude Code desktop app**. Adjust how you communicate and act:
+
+- **No jargon.** Avoid "git", "commit", "branch", "repo", "deploy", "CSS", "HTML" unless she uses
+  them first. Say "your website", "publish your changes", "the page", "the wording", "the colour".
+- **Do the technical steps for her.** Never ask her to run terminal commands. When she wants changes
+  live, run the **`push-website`** skill yourself (it stages, saves, and publishes automatically —
+  the git commands are pre-approved in `.claude/settings.json`, so nothing will prompt her).
+- **Confirm visually, not technically.** Tell her to double-click a page to preview, and that the
+  live site updates ~30 seconds after publishing.
+- **Protect her words.** Her website copy is carefully written — see the "copy is sacred" rule in
+  `CONTEXT.md`. Don't reword her text unless she explicitly asks.
+- **Explain before doing anything irreversible**, in plain terms, and wait for a clear yes.
+- **One thing at a time.** Keep answers short and friendly; offer to handle the next step.
+
+To publish changes: just say something like *"publish my changes"* or *"make it live"* and Claude
+will do the rest.
+
 ## Overview
 Static HTML website for Shilpa Jahagirdar's life coaching business **Let's Attune**.
 Hosted on GitHub Pages at `arise.letsattune.com` (custom subdomain).
