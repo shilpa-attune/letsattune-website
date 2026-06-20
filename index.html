@@ -14,66 +14,115 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #b2cece;
+      background-color: #f4f7f4;
       color: #1a2a4a;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 3rem;
+      border-bottom: 1px solid #e4ebe4;
+    }
+
+    header img {
+      width: 80px;
+      height: auto;
+    }
+
+    header nav a {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: #1a2a4a;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+
+    header nav a:hover {
+      color: #e03a4a;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
       align-items: center;
       justify-content: center;
-      padding: 2rem;
+      padding: 4rem 2rem;
     }
 
     .container {
-      max-width: 680px;
+      max-width: 620px;
       text-align: center;
     }
 
-    .logo {
-      width: 120px;
-      height: auto;
-      margin-bottom: 2rem;
-    }
-
     h1 {
-      font-size: 2.8rem;
+      font-size: 3rem;
       font-weight: 600;
       color: #1a2a4a;
-      margin-bottom: 1.2rem;
-      line-height: 1.2;
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
     }
 
-    p {
-      font-size: 1.1rem;
-      font-weight: 300;
-      color: #1a2a4a;
-      line-height: 1.8;
-    }
-
-    .accent {
+    h1 span {
       color: #e03a4a;
     }
 
     .divider {
-      width: 50px;
+      width: 40px;
       height: 3px;
       background-color: #e03a4a;
       margin: 1.5rem auto;
     }
+
+    p {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: #444;
+      line-height: 1.9;
+    }
+
+    p strong {
+      color: #1a2a4a;
+      font-weight: 400;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.8rem;
+      color: #aaa;
+      border-top: 1px solid #e4ebe4;
+    }
   </style>
 </head>
 <body>
-  <nav style="position: absolute; top: 1.5rem; right: 2rem;">
-    <a href="coach.html" style="font-family: 'Poppins', sans-serif; font-size: 0.95rem; color: #1a2a4a; text-decoration: none; border-bottom: 2px solid #e03a4a; padding-bottom: 2px;">About the Coach</a>
-  </nav>
 
-  <div class="container">
-    <img src="assets/Lets Attune logo.png" alt="Let's Attune Logo" class="logo" />
-    <h1>Tune Into <span class="accent">Yourself</span></h1>
-    <div class="divider"></div>
-    <p>
-      Coaching is a powerful tool to unlock the answers within yourself. At Let's Attune, we offer a safe, non-judgmental space to help you gain clarity, break past limiting beliefs, and step into action — whether it's personal growth, career transitions, or overall well-being. <span class="accent">The answers are within you — let's uncover them together.</span>
-    </p>
-  </div>
+  <header>
+    <img src="assets/Lets Attune logo.png" alt="Let's Attune" />
+    <nav>
+      <a href="coach.html">About the Coach</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <h1>Tune Into <span>Yourself</span></h1>
+      <div class="divider"></div>
+      <p>
+        Coaching is a powerful tool to unlock the answers within yourself. At Let's Attune, we offer a safe, non-judgmental space to help you gain clarity, break past limiting beliefs, and step into action — whether it's personal growth, career transitions, or overall well-being. <strong>The answers are within you — let's uncover them together.</strong>
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    © 2026 Let's Attune · shilpa@letsattune.com
+  </footer>
+
 </body>
 </html>

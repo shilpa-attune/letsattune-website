@@ -14,42 +14,58 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #b2cece;
+      background-color: #f4f7f4;
       color: #1a2a4a;
       min-height: 100vh;
-      padding: 2rem;
+      display: flex;
+      flex-direction: column;
     }
 
-    nav {
-      text-align: center;
-      margin-bottom: 3rem;
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 3rem;
+      border-bottom: 1px solid #e4ebe4;
     }
 
-    nav a {
-      font-size: 0.95rem;
+    header img {
+      width: 80px;
+      height: auto;
+    }
+
+    header nav a {
+      font-size: 0.9rem;
       font-weight: 400;
       color: #1a2a4a;
       text-decoration: none;
-      border-bottom: 2px solid #e03a4a;
-      padding-bottom: 2px;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
     }
 
-    nav a:hover {
+    header nav a:hover {
       color: #e03a4a;
     }
 
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 2rem;
+    }
+
     .container {
-      max-width: 680px;
-      margin: 0 auto;
+      max-width: 620px;
       text-align: center;
     }
 
     .photo {
-      width: 180px;
-      height: 180px;
+      width: 160px;
+      height: 160px;
       border-radius: 50%;
       object-fit: cover;
-      border: 4px solid #1a2a4a;
+      border: 3px solid #1a2a4a;
       margin-bottom: 1.5rem;
     }
 
@@ -57,58 +73,83 @@
       font-size: 2rem;
       font-weight: 600;
       color: #1a2a4a;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.3rem;
+      letter-spacing: -0.01em;
     }
 
     .title {
-      font-size: 0.95rem;
+      font-size: 0.85rem;
       font-weight: 400;
       color: #e03a4a;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       margin-bottom: 1.5rem;
-      letter-spacing: 0.05em;
     }
 
     .divider {
-      width: 50px;
+      width: 40px;
       height: 3px;
       background-color: #e03a4a;
-      margin: 0 auto 1.5rem;
+      margin: 0 auto 1.8rem;
     }
 
     p {
       font-size: 1rem;
       font-weight: 300;
+      color: #444;
       line-height: 1.9;
-      margin-bottom: 1.2rem;
       text-align: left;
+      margin-bottom: 1.2rem;
+    }
+
+    p em {
+      color: #1a2a4a;
+      font-style: italic;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.8rem;
+      color: #aaa;
+      border-top: 1px solid #e4ebe4;
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <a href="index.html">← Back to Home</a>
-  </nav>
+  <header>
+    <img src="assets/Lets Attune logo.png" alt="Let's Attune" />
+    <nav>
+      <a href="index.html">← Home</a>
+    </nav>
+  </header>
 
-  <div class="container">
-    <img src="assets/shilpa.jpeg" alt="Shilpa Jahagirdar" class="photo" />
-    <h1>Shilpa Jahagirdar</h1>
-    <div class="title">PCC Coach · ICF Certified</div>
-    <div class="divider"></div>
+  <main>
+    <div class="container">
+      <img src="assets/shilpa.jpeg" alt="Shilpa Jahagirdar" class="photo" />
+      <h1>Shilpa Jahagirdar</h1>
+      <div class="title">PCC Coach · ICF Certified</div>
+      <div class="divider"></div>
 
-    <p>
-      A PCC Coach certified by ICF, Shilpa comes with an IT background and is also trained in Shadow Work, Emotional Intelligence, Positive Psychology, and NLP — with over 10 years of experience in Corporate Training and Leadership Development.
-    </p>
-    <p>
-      Once she began her coach training, life made more sense. She went deeper into the world of psychology and realised this was her purpose — to just be there for people. To be a listening ear, without advice, without judgement. Be it a simple one-day incident or a complex long-term plan, it's about figuring out what is happening within and what you are really looking for.
-    </p>
-    <p>
-      Her specialty is helping people identify and achieve personal goals by coping with constant worry, overthinking, distress, anxiety, or stress. She also does extensive work with an NGO in areas of mental distress and suicide prevention, and has an inclination towards energy healing and spirituality.
-    </p>
-    <p>
-      <em>Inspiration · Love · Freedom · Joy · Positivity — these are lifelines for me. I trust every individual is unique. Come with me on that journey to explore self deeper...</em>
-    </p>
-  </div>
+      <p>
+        A PCC Coach certified by ICF, Shilpa comes with an IT background and is also trained in Shadow Work, Emotional Intelligence, Positive Psychology, and NLP — with over 10 years of experience in Corporate Training and Leadership Development.
+      </p>
+      <p>
+        Once she began her coach training, life made more sense. She went deeper into the world of psychology and realised this was her purpose — to just be there for people. To be a listening ear, without advice, without judgement. Be it a simple one-day incident or a complex long-term plan, it's about figuring out what is happening within and what you are really looking for.
+      </p>
+      <p>
+        Her specialty is helping people identify and achieve personal goals by coping with constant worry, overthinking, distress, anxiety, or stress. She also does extensive work with an NGO in areas of mental distress and suicide prevention, and has an inclination towards energy healing and spirituality.
+      </p>
+      <p>
+        <em>Inspiration · Love · Freedom · Joy · Positivity — these are lifelines for me. I trust every individual is unique. Come with me on that journey to explore self deeper...</em>
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    © 2026 Let's Attune · shilpa@letsattune.com
+  </footer>
 
 </body>
 </html>
