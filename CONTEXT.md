@@ -12,6 +12,10 @@ Shilpa has crafted the wording deliberately. The source of truth is the live Goo
 `https://www.letsattune.com/`. Headings/eyebrows/UI microcopy may be added, but all body/hero/section
 prose must match the live site word-for-word. (Supersedes the earlier "lightly tighten" decision.)
 
+_Two obvious source typos were deliberately corrected with the owner's approval and should stay
+corrected: "intenstive" → "intensive" (workshops expert bio), "one-one-one" → "one-on-one"
+(homepage testimonial). Do not "restore" these._
+
 ## Language
 
 ### Offerings (the four "Ways We Support")
