@@ -3,262 +3,149 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About the Coach — Let's Attune</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f4f7f4;
-      color: #1a2a4a;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* ── HEADER ── */
-    header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.5rem 3rem;
-      background: #f4f7f4;
-      border-bottom: 1px solid transparent;
-      transition: padding 0.3s, box-shadow 0.3s, border-color 0.3s;
-      z-index: 100;
-    }
-
-    header.scrolled {
-      padding: 0.8rem 3rem;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
-      border-color: #e4ebe4;
-    }
-
-    header img {
-      width: 80px;
-      transition: width 0.3s;
-    }
-
-    header.scrolled img { width: 55px; }
-
-    header nav a {
-      font-size: 0.9rem;
-      color: #1a2a4a;
-      text-decoration: none;
-      letter-spacing: 0.04em;
-      transition: color 0.2s;
-    }
-
-    header nav a:hover { color: #e03a4a; }
-
-    /* ── HERO ── */
-    .hero {
-      padding-top: 8rem;
-      padding-bottom: 4rem;
-      text-align: center;
-      background: #1a2a4a;
-      color: #fff;
-    }
-
-    .photo-wrap {
-      position: relative;
-      display: inline-block;
-      margin-top: 3rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .photo-wrap img {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: center 0%;
-      border: 4px solid #e03a4a;
-      display: block;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
-
-    .photo-wrap img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 12px 40px rgba(224,58,74,0.35);
-    }
-
-    .hero h1 {
-      font-size: 2.2rem;
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-    }
-
-    .hero .role {
-      font-size: 0.82rem;
-      color: #e03a4a;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    /* ── BIO ── */
-    .bio {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 4rem 2rem;
-    }
-
-    .fade-in {
-      opacity: 0;
-      transform: translateY(25px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .bio p {
-      font-size: 1rem;
-      font-weight: 300;
-      color: #444;
-      line-height: 1.9;
-      margin-bottom: 1.3rem;
-    }
-
-    .bio p em {
-      color: #1a2a4a;
-      font-style: italic;
-    }
-
-    .divider {
-      width: 40px;
-      height: 3px;
-      background: #e03a4a;
-      margin: 0 auto 2.5rem;
-    }
-
-    /* ── TAGS ── */
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-bottom: 2rem;
-    }
-
-    .tag {
-      background: #1a2a4a;
-      color: #fff;
-      font-size: 0.78rem;
-      padding: 0.35rem 0.9rem;
-      border-radius: 20px;
-      letter-spacing: 0.04em;
-      transition: background 0.2s;
-    }
-
-    .tag:hover { background: #e03a4a; }
-
-    /* ── CTA ── */
-    .cta-wrap {
-      text-align: center;
-      padding: 3rem 2rem 5rem;
-    }
-
-    .cta-wrap a {
-      display: inline-block;
-      padding: 0.85rem 2.2rem;
-      background: #e03a4a;
-      color: #fff;
-      text-decoration: none;
-      font-size: 0.9rem;
-      letter-spacing: 0.06em;
-      border-radius: 2px;
-      transition: background 0.3s;
-    }
-
-    .cta-wrap a:hover { background: #1a2a4a; }
-
-    footer {
-      margin-top: auto;
-      text-align: center;
-      padding: 1.5rem;
-      font-size: 0.8rem;
-      color: #aaa;
-      border-top: 1px solid #e4ebe4;
-    }
-
-    @media (max-width: 600px) {
-      header { padding: 1rem 1.5rem; }
-    }
-  </style>
+  <title>About Shilpa Jahagirdar — PCC Coach, ICF Certified | Let's Attune</title>
+  <meta name="description" content="I am a PCC-certified Coach accredited by the International Coaching Federation (ICF), with a background in IT and over 10 years of experience in Corporate Training and Leadership Development. Founder of Lets Attune." />
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="About Shilpa Jahagirdar — Let's Attune" />
+  <meta property="og:description" content="PCC coach, ICF certified. Founder of Lets Attune — coaching, workshops and listening circles." />
+  <meta property="og:image" content="assets/shilpa-full.jpg" />
+  <meta property="og:url" content="https://arise.letsattune.com/coach.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" type="image/png" href="assets/Lets Attune logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <header id="header">
-    <img src="assets/Lets Attune logo.png" alt="Let's Attune" />
-    <nav>
-      <a href="index.html">← Home</a>
-    </nav>
+  <!-- ANNOUNCEMENT BAR (edit this one line per workshop; comment out to hide) -->
+  <div class="announce">
+    <span class="pulse"></span>
+    <strong>Women's Reset and Reconnection Workshop</strong> starting soon... ·
+    <a href="workshops.html">Know more →</a>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <img src="assets/Lets Attune logo.png" alt="Let's Attune" />
+        <span class="name">Let's Attune</span>
+      </a>
+      <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+      <nav class="nav">
+        <a class="link" href="index.html">Home</a>
+        <a class="link active" href="coach.html">About</a>
+        <a class="link" href="workshops.html">Workshops</a>
+        <a class="btn btn-primary" href="https://forms.gle/p1m3mecHvxKqkyVN9" target="_blank" rel="noopener">Contact Us</a>
+      </nav>
+    </div>
   </header>
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="photo-wrap">
-      <img src="assets/shilpa.jpeg" alt="Shilpa Jahagirdar" />
-    </div>
-    <h1>Shilpa Jahagirdar</h1>
-    <div class="role">PCC Coach · ICF Certified</div>
-  </div>
-
   <!-- BIO -->
-  <div class="bio">
-    <div class="divider"></div>
-
-    <div class="fade-in">
-      <div class="tags">
-        <span class="tag">Shadow Work</span>
-        <span class="tag">Emotional Intelligence</span>
-        <span class="tag">Positive Psychology</span>
-        <span class="tag">NLP Practitioner</span>
-        <span class="tag">Transactional Analysis</span>
-        <span class="tag">Enneagram</span>
-        <span class="tag">Energy Healing</span>
+  <section class="coach-hero band-sage">
+    <div class="wrap">
+      <div class="coach-grid">
+        <img class="coach-photo reveal" src="assets/shilpa-full.jpg" alt="Shilpa Jahagirdar, PCC Coach" />
+        <div class="coach-bio reveal">
+          <div class="eyebrow">Know Your Coach</div>
+          <h1>Shilpa Jahagirdar</h1>
+          <div class="role">PCC Coach · ICF Certified · Founder</div>
+          <p>I am a PCC-certified Coach accredited by the International Coaching Federation (ICF), with a background in IT and over 10 years of experience in Corporate Training and Leadership Development.</p>
+          <p>While my professional journey began in the corporate world, I found myself increasingly drawn towards understanding people, emotions, behaviour, and what truly helps us navigate life's challenges. That curiosity eventually led me to coaching—and it felt like coming home.</p>
+          <p>That's when, 6 years ago, I founded Lets Attune with a simple intention—to create reflective and emotionally safe spaces where people can pause, understand themselves more deeply, and navigate life's challenges with greater clarity and awareness.</p>
+          <p>Today, through coaching, workshops, listening circles, and group programs, I support individuals navigating transitions, uncertainty, emotional overwhelm, and personal growth, helping them reconnect with themselves and move forward with greater confidence and intention.</p>
+          <div class="cred-row">
+            <span class="cred">PCC Coach</span>
+            <span class="cred">ICF Certified</span>
+            <span class="cred">10+ yrs Corporate Training</span>
+          </div>
+          <div class="btnrow">
+            <a class="btn btn-primary" href="https://forms.gle/p1m3mecHvxKqkyVN9" target="_blank" rel="noopener">Contact Us</a>
+            <a class="btn btn-ghost" href="https://wa.me/918080166955" target="_blank" rel="noopener">Chat on WhatsApp</a>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="fade-in">
-      <p>A PCC Coach certified by ICF, Shilpa comes with an IT background and over 10 years of experience in Corporate Training and Leadership Development. She is trained in Shadow Work, Emotional Intelligence, Positive Psychology, and is an NLP Practitioner.</p>
+  <!-- BEYOND COACHING -->
+  <section class="section band-white">
+    <div class="wrap reveal">
+      <h2>Beyond Coaching</h2>
+      <div class="rule"></div>
+      <p>Alongside my coaching journey, I have explored and studied areas such as Shadow Work, Transactional Analysis (TA), Nonviolent Communication (NVC), the Enneagram, and Psychology.</p>
+      <p style="margin-top:1rem">Over the years, I have facilitated workshops, supported individuals through periods of uncertainty and transition, and contributed to emotional wellbeing initiatives, including work with an NGO in the areas of mental distress and suicide prevention.</p>
+      <p style="margin-top:1rem">Apart from coaching, I am also drawn to energy healing, spirituality, and deeper inner exploration. I believe that growth can happen through awareness, reflection, conversation, and sometimes simply through creating space to listen more deeply to ourselves.</p>
+      <div class="tagset">
+        <span class="pill">Shadow Work</span>
+        <span class="pill">Transactional Analysis (TA)</span>
+        <span class="pill">Nonviolent Communication (NVC)</span>
+        <span class="pill">Enneagram</span>
+        <span class="pill">Psychology</span>
+        <span class="pill">Energy Healing</span>
+      </div>
     </div>
+  </section>
 
-    <div class="fade-in">
-      <p>Once she began her coach training, life made more sense. She went deeper into the world of psychology and realised this was her true purpose — to just be there for people. To be a listening ear, without advice, without judgement. Be it a simple one-day incident or a complex long-term plan, it's about figuring out what is happening within and what you are really looking for.</p>
+  <!-- A FEW THOUGHTS -->
+  <section class="section band-sage">
+    <div class="wrap reveal">
+      <h2>A Few Thoughts Along The Way</h2>
+      <div class="rule"></div>
+      <p>I enjoy writing about life, relationships, self-awareness, and the experiences that shape us. If you would like to read some of my reflections and stories, you're welcome to explore my blog.</p>
+      <div class="bloglinks">
+        <a class="btn btn-ghost" href="https://trueme.home.blog/" target="_blank" rel="noopener">Read My Blogs →</a>
+        <a class="btn btn-ghost" href="https://www.sacredspace.co.in/" target="_blank" rel="noopener">Sacred Space →</a>
+      </div>
     </div>
+  </section>
 
-    <div class="fade-in">
-      <p>Her specialty is helping people identify and achieve personal goals by coping with constant worry, overthinking, distress, anxiety, or stress. She also does extensive work with an NGO in areas of mental distress and suicide prevention, and has an inclination towards energy healing and spirituality.</p>
+  <!-- CTA -->
+  <section class="section band-navy cta-strip">
+    <div class="wrap reveal">
+      <h2>Let's Connect</h2>
+      <div class="rule" style="margin-left:auto;margin-right:auto"></div>
+      <p class="lead" style="margin-left:auto;margin-right:auto">Whether you're facing a challenge, an important decision, or simply looking for a different perspective, we'd be happy to have a conversation.</p>
+      <div class="btnrow">
+        <a class="btn btn-primary" href="https://forms.gle/p1m3mecHvxKqkyVN9" target="_blank" rel="noopener">Contact Us</a>
+        <a class="btn btn-ghost" href="https://wa.me/918080166955" target="_blank" rel="noopener">Chat on WhatsApp</a>
+      </div>
     </div>
+  </section>
 
-    <div class="fade-in">
-      <p><em>Inspiration · Love · Freedom · Joy · Positivity — these are lifelines for me. I trust every individual is unique. Come with me on that journey to explore self deeper...</em></p>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <div class="name">Let's Attune</div>
+          <p style="color:rgba(255,255,255,0.7)">Reflective, emotionally safe spaces to pause, understand yourself, and move forward with clarity.</p>
+          <img class="footer-qr" src="assets/qr.png" alt="WhatsApp QR — Let's Attune" />
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="coach.html">About the Coach</a></li>
+            <li><a href="workshops.html">Workshops</a></li>
+            <li><a href="https://forms.gle/p1m3mecHvxKqkyVN9" target="_blank" rel="noopener">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://wa.me/918080166955" target="_blank" rel="noopener">WhatsApp / Call</a><br>+91 8080166955</li>
+            <li><a href="mailto:shilpa@letsattune.com">shilpa@letsattune.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-motto">EXPRESS : EXPLORE : EMPOWER : EVOLVE</div>
+      <div class="footer-copy">© <span data-year>2026</span> Let's Attune · Shilpa Jahagirdar, PCC · ICF Certified</div>
     </div>
-  </div>
+  </footer>
 
-  <div class="cta-wrap fade-in">
-    <a href="https://forms.gle/p1m3mecHvxKqkyVN9" target="_blank">Book a Session with Shilpa</a>
-  </div>
-
-  <footer>© 2026 Let's Attune · shilpa@letsattune.com</footer>
-
-  <script>
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      header.classList.toggle('scrolled', window.scrollY > 50);
-    });
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.15 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-  </script>
-
+  <script src="main.js"></script>
 </body>
 </html>

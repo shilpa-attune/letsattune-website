@@ -3,558 +3,231 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Let's Attune</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f4f7f4;
-      color: #1a2a4a;
-      overflow-x: hidden;
-    }
-
-    /* ── HEADER ── */
-    header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.5rem 3rem;
-      background: #f4f7f4;
-      border-bottom: 1px solid transparent;
-      transition: padding 0.3s, box-shadow 0.3s, border-color 0.3s;
-      z-index: 100;
-    }
-
-    header.scrolled {
-      padding: 0.8rem 3rem;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
-      border-color: #e4ebe4;
-    }
-
-    header img {
-      width: 80px;
-      transition: width 0.3s;
-    }
-
-    header.scrolled img { width: 55px; }
-
-    header nav a {
-      font-size: 0.9rem;
-      color: #1a2a4a;
-      text-decoration: none;
-      letter-spacing: 0.04em;
-      margin-left: 2rem;
-      transition: color 0.2s;
-    }
-
-    header nav a:hover { color: #e03a4a; }
-
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem;
-      padding-top: 6rem;
-    }
-
-    .hero h1 {
-      font-size: 3.2rem;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      line-height: 1.15;
-      min-height: 4rem;
-    }
-
-    .hero h1 span.accent { color: #e03a4a; }
-
-    .cursor {
-      display: inline-block;
-      width: 3px;
-      background: #e03a4a;
-      animation: blink 0.7s infinite;
-      margin-left: 2px;
-      vertical-align: middle;
-      height: 2.8rem;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-
-    .hero .divider {
-      width: 40px;
-      height: 3px;
-      background: #e03a4a;
-      margin: 1.5rem auto;
-      transform: scaleX(0);
-      transform-origin: left;
-      animation: expandLine 0.8s 2.2s forwards;
-    }
-
-    @keyframes expandLine { to { transform: scaleX(1); } }
-
-    .hero p {
-      font-size: 1.05rem;
-      font-weight: 300;
-      color: #444;
-      line-height: 1.9;
-      max-width: 560px;
-      opacity: 0;
-      animation: fadeUp 0.8s 2.4s forwards;
-    }
-
-    .hero .cta {
-      display: inline-block;
-      margin-top: 2rem;
-      padding: 0.85rem 2.2rem;
-      background: #1a2a4a;
-      color: #fff;
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-      border-radius: 2px;
-      opacity: 0;
-      animation: fadeUp 0.8s 2.8s forwards;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero .cta::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: #e03a4a;
-      transform: translateX(-100%);
-      transition: transform 0.3s;
-      z-index: 0;
-    }
-
-    .hero .cta:hover::after { transform: translateX(0); }
-    .hero .cta span { position: relative; z-index: 1; }
-
-    /* ── FADE IN ── */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ── SECTION BASE ── */
-    .section {
-      padding: 5rem 2rem;
-      max-width: 760px;
-      margin: 0 auto;
-    }
-
-    .section-label {
-      font-size: 0.75rem;
-      font-weight: 400;
-      color: #e03a4a;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 0.8rem;
-    }
-
-    .section h2 {
-      font-size: 2rem;
-      font-weight: 600;
-      color: #1a2a4a;
-      margin-bottom: 1rem;
-      letter-spacing: -0.01em;
-    }
-
-    .section p {
-      font-size: 1rem;
-      font-weight: 300;
-      color: #444;
-      line-height: 1.9;
-      margin-bottom: 1rem;
-    }
-
-    .divider {
-      width: 40px;
-      height: 3px;
-      background: #e03a4a;
-      margin-bottom: 2rem;
-    }
-
-    /* ── COACHING CARDS ── */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2.5rem;
-    }
-
-    .card {
-      background: #fff;
-      border-radius: 4px;
-      padding: 2rem 1.5rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.09);
-    }
-
-    .card h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      color: #1a2a4a;
-      margin-bottom: 0.6rem;
-    }
-
-    .card p {
-      font-size: 0.9rem;
-      color: #666;
-      line-height: 1.7;
-      margin: 0;
-    }
-
-    .card .icon {
-      font-size: 1.6rem;
-      margin-bottom: 0.8rem;
-    }
-
-    /* ── VALUES ── */
-    .values-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 1.2rem;
-      margin-top: 2.5rem;
-    }
-
-    .value {
-      background: #1a2a4a;
-      color: #fff;
-      border-radius: 4px;
-      padding: 1.5rem;
-      transition: background 0.3s;
-    }
-
-    .value:hover { background: #e03a4a; }
-
-    .value h4 {
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-    }
-
-    .value p {
-      font-size: 0.82rem;
-      font-weight: 300;
-      color: rgba(255,255,255,0.8);
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    /* ── TESTIMONIALS ── */
-    .testimonials-section {
-      background: #1a2a4a;
-      padding: 5rem 2rem;
-      text-align: center;
-    }
-
-    .testimonials-section .section-label {
-      color: #e03a4a;
-      display: block;
-      margin-bottom: 0.8rem;
-    }
-
-    .testimonials-section h2 {
-      font-size: 2rem;
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: 3rem;
-    }
-
-    .carousel {
-      max-width: 620px;
-      margin: 0 auto;
-      min-height: 180px;
-    }
-
-    .slide { display: none; animation: fadeSlide 0.6s ease; }
-    .slide.active { display: block; }
-
-    @keyframes fadeSlide {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .slide blockquote {
-      font-size: 1.05rem;
-      font-weight: 300;
-      line-height: 1.9;
-      color: #e8f0e8;
-      margin-bottom: 1.2rem;
-    }
-
-    .slide blockquote::before {
-      content: '"';
-      font-size: 3rem;
-      color: #e03a4a;
-      line-height: 0;
-      vertical-align: -0.6rem;
-      margin-right: 0.2rem;
-    }
-
-    .slide cite {
-      font-size: 0.85rem;
-      color: #e03a4a;
-      letter-spacing: 0.06em;
-      font-style: normal;
-    }
-
-    .dots {
-      margin-top: 2rem;
-      display: flex;
-      justify-content: center;
-      gap: 0.5rem;
-    }
-
-    .dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: #fff;
-      opacity: 0.3;
-      cursor: pointer;
-      transition: opacity 0.3s;
-    }
-
-    .dot.active { opacity: 1; background: #e03a4a; }
-
-    /* ── CONTACT ── */
-    .contact-section {
-      text-align: center;
-      padding: 5rem 2rem;
-    }
-
-    .contact-section h2 {
-      font-size: 2rem;
-      font-weight: 600;
-      margin-bottom: 0.8rem;
-    }
-
-    .contact-section p {
-      font-size: 1rem;
-      font-weight: 300;
-      color: #555;
-      margin-bottom: 2rem;
-    }
-
-    .contact-section a.btn {
-      display: inline-block;
-      padding: 0.85rem 2.2rem;
-      background: #e03a4a;
-      color: #fff;
-      text-decoration: none;
-      font-size: 0.9rem;
-      letter-spacing: 0.06em;
-      border-radius: 2px;
-      transition: background 0.3s;
-    }
-
-    .contact-section a.btn:hover { background: #1a2a4a; }
-
-    /* ── FOOTER ── */
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      font-size: 0.8rem;
-      color: #aaa;
-      border-top: 1px solid #e4ebe4;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 600px) {
-      .hero h1 { font-size: 2.2rem; }
-      header { padding: 1rem 1.5rem; }
-      header.scrolled { padding: 0.6rem 1.5rem; }
-    }
-  </style>
+  <title>Let's Attune — Coaching, Workshops & Listening Circles by Shilpa Jahagirdar</title>
+  <meta name="description" content="At Lets Attune, we help people make sense of what they are experiencing, feel more confident in themselves and their choices, and find a way forward that feels right for them. Coaching, workshops, listening circles and corporate programs with PCC-certified coach Shilpa Jahagirdar." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Let's Attune — Tune Into Yourself" />
+  <meta property="og:description" content="Coaching, workshops and listening circles to help you pause, understand yourself, and move forward with clarity." />
+  <meta property="og:image" content="assets/shilpa-full.jpg" />
+  <meta property="og:url" content="https://arise.letsattune.com/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" type="image/png" href="assets/Lets Attune logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <header id="header">
-    <img src="assets/Lets Attune logo.png" alt="Let's Attune" />
-    <nav>
-      <a href="coach.html">About the Coach</a>
-      <a href="https://forms.gle/p1m3mecHvxKqkyVN9" target="_blank">Get in Touch</a>
-    </nav>
+  <!-- ANNOUNCEMENT BAR (edit this one line per workshop; comment out to hide) -->
+  <div class="announce">
+    <span class="pulse"></span>
+    <strong>Women's Reset and Reconnection Workshop</strong> starting soon... ·
+    <a href="workshops.html">Know more →</a>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <img src="assets/Lets Attune logo.png" alt="Let's Attune" />
+        <span class="name">Let's Attune</span>
+      </a>
+      <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+      <nav class="nav">
+        <a class="link active" href="index.html">Home</a>
+        <a class="link" href="coach.html">About</a>
+        <a class="link" href="workshops.html">Workshops</a>
+        <a class="btn btn-primary" href="https://forms.gle/p1m3mecHvxKqkyVN9" target="_blank" rel="noopener">Contact Us</a>
+      </nav>
+    </div>
   </header>
 
   <!-- HERO -->
-  <div class="hero">
-    <div>
-      <h1 id="typewriter"><span class="cursor"></span></h1>
-      <div class="divider"></div>
-      <p>There is no way to happiness — happiness is the way. Coaching helps you unlock the answers already within you.</p>
-      <a href="https://forms.gle/p1m3mecHvxKqkyVN9" target="_blank" class="cta"><span>Get Coached →</span></a>
+  <section class="hero on-dark">
+    <div class="hero__bg"></div>
+    <div class="hero__tint"></div>
+    <div class="hero__grain"></div>
+    <div class="wrap">
+      <h1><span id="typewriter" data-plain="Tune Into " data-accent="Yourself"><span class="cursor"></span></span></h1>
+      <p class="hero__quote">"There is no way to happiness, Happiness is the way" — Thich Nhat Hanh</p>
+      <div class="hero__sub">
+        <p>Life doesn't always come with clear answers nor the place to find them..</p>
+        <p>Whether you're navigating a difficult decision, a life transition, repetitive challenges, or simply feeling that something needs attention, you don't have to figure it out alone.</p>
+        <p>At Lets Attune, we help people make sense of what they are experiencing, feel more confident in themselves and their choices, and find a way forward that feels right for them.</p>
+      </div>
+      <div class="hero__cta">
+        <a class="btn btn-primary" href="#help">Explore How we can Help</a>
+        <a class="btn btn-ghost" href="https://forms.gle/p1m3mecHvxKqkyVN9" target="_blank" rel="noopener">Contact Us</a>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <!-- WHY COACHING -->
-  <div class="section">
-    <div class="fade-in">
-      <div class="section-label">The Why</div>
-      <h2>Looking for answers?</h2>
-      <div class="divider"></div>
-      <p>Coaching is a conversation that brings clarity to your situation and helps you see things from a different perspective. It's different from counselling or mentoring, yet similar in its solution-focused intent.</p>
-      <p>Through coaching, you gain self-awareness, confidence, and actionable strategies to overcome challenges and achieve your goals — making it ideal for individuals, groups, teams, or families.</p>
+  <!-- DOES THIS SOUND FAMILIAR -->
+  <section class="section band-white">
+    <div class="wrap center reveal">
+      <h2>Does this sound familiar?</h2>
+      <div class="rule"></div>
     </div>
-  </div>
+    <div class="wrap">
+      <div class="familiar-grid">
+        <div class="familiar reveal">"I'm carrying so much that I'm no longer sure what deserves my attention"</div>
+        <div class="familiar reveal">"I know something needs to change, but I don't know where to begin"</div>
+        <div class="familiar reveal">"I have a decision to make, but every option seems to come with a risk or trade-offs."</div>
+        <div class="familiar reveal">"I spend so much time solving problems for others that I rarely get the space to think about my own."</div>
+        <div class="familiar reveal">"I know I am capable of more, but something is preventing me from moving forward."</div>
+        <div class="familiar reveal">"I want greater confidence, clarity, and conviction in the decisions I make."</div>
+      </div>
+    </div>
+  </section>
 
-  <!-- COACHING TYPES -->
-  <div class="section" style="padding-top: 0;">
-    <div class="fade-in">
-      <div class="section-label">How We Work</div>
-      <h2>Choose Your Journey</h2>
-      <div class="divider"></div>
+  <!-- HOW WE HELP (4-step approach) -->
+  <section class="section" id="help">
+    <div class="wrap center reveal">
+      <h2>How we help?</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="wrap">
+      <div class="steps">
+        <div class="step reveal"><h3>Understand</h3><p>Slow down, untangle what's happening, and understand what's really driving the situation.</p></div>
+        <div class="step reveal"><h3>Explore</h3><p>Step back from the problem, challenge assumptions, and discover perspectives you may not have considered before.</p></div>
+        <div class="step reveal"><h3>Align</h3><p>Recognise where there may be gaps and reconnect with what feels right, meaningful, and important to you.</p></div>
+        <div class="step reveal"><h3>Integrate</h3><p>Take what you've discovered and allow it to become part of how you live, work, and respond.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAYS WE SUPPORT (services) -->
+  <section class="section band-sage">
+    <div class="wrap center reveal">
+      <h2>Ways We Support</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="wrap">
       <div class="cards">
-        <div class="card">
-          <div class="icon">🎧</div>
-          <h3>Listening Support</h3>
-          <p>A safe, non-judgmental space to share thoughts and challenges without advice. Process emotions and gain clarity at your own pace.</p>
-        </div>
-        <div class="card">
-          <div class="icon">✨</div>
-          <h3>Experience Coaching</h3>
-          <p>A confidential hour-long session to gain clarity, set actionable goals, and uncover strategies to overcome the challenges you face.</p>
-        </div>
-        <div class="card">
-          <div class="icon">🌱</div>
-          <h3>Transformative Coaching</h3>
-          <p>Long-term engagement with continuous support, accountability, and growth across multiple sessions. Lasting, sustainable change.</p>
-        </div>
-        <div class="card">
-          <div class="icon">🤝</div>
-          <h3>Group Coaching</h3>
-          <p>A collaborative confidential space where group dynamics enhance accountability, motivation, and new perspectives.</p>
-        </div>
+        <div class="card reveal"><span class="ic">🌿</span><h3>Coaching</h3><p>One-on-one confidential conversations to help you navigate challenges, take decisions, transitions, and personal or professional growth.</p></div>
+        <div class="card reveal"><span class="ic">✨</span><h3>Workshops</h3><p>Structured group experiences designed around growth, awareness, reflection, learning, and bringing change.</p></div>
+        <div class="card reveal"><span class="ic">🤲</span><h3>Listening Circles</h3><p>Facilitated spaces for shared reflection, understanding, and connection. Sometimes before jumping into solutions and advice we need to empty ourselves.</p></div>
+        <div class="card reveal"><span class="ic">🏢</span><h3>Corporate Programs</h3><p>Behavioural Skill Training, leadership development, communication, decision-making, wellbeing, and people-focused development initiatives.</p></div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- VALUES -->
-  <div class="section">
-    <div class="fade-in">
-      <div class="section-label">What We Stand For</div>
-      <h2>Our Values</h2>
-      <div class="divider"></div>
-      <div class="values-grid">
-        <div class="value">
-          <h4>Connection</h4>
-          <p>Building meaningful, supportive relationships that contribute to deep healing.</p>
-        </div>
-        <div class="value">
-          <h4>Inclusivity</h4>
-          <p>A safe, non-judgmental space for everyone, regardless of their life story.</p>
-        </div>
-        <div class="value">
-          <h4>Holistic</h4>
-          <p>Focusing on the whole person — body, mind, and spirit.</p>
-        </div>
-        <div class="value">
-          <h4>Resilience</h4>
-          <p>Helping you develop inner strength to overcome challenges and thrive.</p>
-        </div>
+  <!-- WHO WE WORK WITH -->
+  <section class="section band-white">
+    <div class="wrap center reveal">
+      <h2>Who we work with</h2>
+      <div class="rule"></div>
+      <div class="pills">
+        <span class="pill reveal">Working Professionals</span>
+        <span class="pill reveal">Managers &amp; Leaders</span>
+        <span class="pill reveal">Students &amp; Young Adults</span>
+        <span class="pill reveal">Parents and Women</span>
+        <span class="pill reveal">Business Owners &amp; Entrepreneurs</span>
+        <span class="pill reveal">Individuals Navigating Change</span>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- COACH TEASER -->
+  <section class="section">
+    <div class="wrap teaser reveal">
+      <img class="teaser__photo" src="assets/shilpa.jpeg" alt="Shilpa Jahagirdar" />
+      <div>
+        <div class="eyebrow">Know Your Coach</div>
+        <h2>Shilpa Jahagirdar</h2>
+        <div class="role" style="font-size:0.84rem;letter-spacing:0.06em;color:var(--coral);text-transform:uppercase;margin-bottom:0.6rem">PCC Coach | Founder, Lets Attune</div>
+        <div class="rule"></div>
+        <p>What began as a career in technology gradually evolved into a deeper curiosity about people, behaviour, and what helps us move through life's challenges with greater confidence and understanding.</p>
+        <p style="margin-top:0.9rem">Today, through Lets Attune, Shilpa works with individuals, professionals, and leaders navigating change, important decisions, and periods of transition in life and work.</p>
+        <p style="margin-top:1.2rem"><a class="btn btn-ghost" href="coach.html">Know More →</a></p>
+      </div>
+    </div>
+  </section>
 
   <!-- TESTIMONIALS -->
-  <div class="testimonials-section">
-    <span class="section-label">Voices</span>
-    <h2>What Clients Say</h2>
-    <div class="carousel">
-      <div class="slide active">
-        <blockquote>I consider myself fortunate — no other person could ever be a coach for me so perfectly. I am now capable of expressing myself clearly, getting things done my way, and getting the recognition I deserve.</blockquote>
-        <cite>— VP, Product and Sales, Chennai</cite>
-      </div>
-      <div class="slide">
-        <blockquote>Shilpa empowered people with life skills and built awareness to take one step at a time. She went beyond her commitment out of love to help people. She is a rare gem genuinely making a difference.</blockquote>
-        <cite>— Founder, NGO, Pune</cite>
+  <section class="section band-navy">
+    <div class="wrap center reveal">
+      <h2>Testimonials</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="wrap">
+      <div class="quotes">
+        <figure class="quote reveal">
+          <div class="eyebrow" style="color:var(--sage)">Individual Coaching</div>
+          <p>I consider myself fortunate and personally believe that no other person could ever be a coach for me so perfectly like I had you as my coach. I got stuck mentally doing routine things and proving my skills at times of opportunity and realized that my potential and experience are under utilized at the start of our session. Could not think of any plans to come out of it.</p>
+          <p style="margin-top:0.8rem">Now I am capable of expressing myself clearly, getting things done in my way, handling much more responsibility and getting the recognition I deserve.</p>
+          <p style="margin-top:0.8rem">Once again my heartfelt thanks to you. Words cannot express the value of your efforts</p>
+          <cite>— VP, Product and Sales, Chennai</cite>
+        </figure>
+        <figure class="quote reveal">
+          <div class="eyebrow" style="color:var(--sage)">Group Coaching</div>
+          <p>Shilpa enthusiastically conducted a few workshops and many one-one-one coaching sessions for the members of my NGO. People with challenges poured their heart out to her as she made them very comfortable, and connected with them.</p>
+          <p style="margin-top:0.8rem">She empowered people with life skills and built awareness to take one step at a time to come out of setbacks. She went beyond her commitment and my expectation - out of love to help people. Shilpa is a rare gem and her knowledge and approach inspires me to be a better human being.</p>
+          <p style="margin-top:0.8rem">She is genuinely making a difference in a world mostly focused on making money.</p>
+          <cite>— Founder, NGO, Pune</cite>
+        </figure>
       </div>
     </div>
-    <div class="dots">
-      <div class="dot active" onclick="goTo(0)"></div>
-      <div class="dot" onclick="goTo(1)"></div>
+  </section>
+
+  <!-- WHY LET'S ATTUNE (manifesto) -->
+  <section class="section band-sage">
+    <div class="wrap center reveal manifesto">
+      <h2 style="font-style:normal">Why Let's Attune</h2>
+      <div class="rule" style="margin-left:auto;margin-right:auto"></div>
+      <p>Lasting change begins with understanding.<br>So we listen fully before moving forward.</p>
+      <p>Most people already know what they should do.<br>The challenge is understanding what is getting in the way.</p>
+      <p>We don't just focus on the situation.<br>We explore what may be shaping it.</p>
+      <p>Because when perspective shifts, new possibilities emerge.</p>
     </div>
-  </div>
+  </section>
 
-  <!-- CONTACT -->
-  <div class="contact-section fade-in">
-    <div class="section-label">Let's Connect</div>
-    <h2>Ready to Tune In?</h2>
-    <p>Reach out at <strong>shilpa@letsattune.com</strong> or +8080166955</p>
-    <a href="https://forms.gle/p1m3mecHvxKqkyVN9" target="_blank" class="btn">Book a Session</a>
-  </div>
+  <!-- CTA -->
+  <section class="section cta-strip">
+    <div class="wrap reveal">
+      <h2>Not sure where to begin?</h2>
+      <div class="rule" style="margin-left:auto;margin-right:auto"></div>
+      <p class="lead" style="margin-left:auto;margin-right:auto">Whether you're facing a challenge, an important decision, or simply looking for a different perspective, we'd be happy to have a conversation.</p>
+      <div class="btnrow">
+        <a class="btn btn-primary" href="https://forms.gle/p1m3mecHvxKqkyVN9" target="_blank" rel="noopener">Connect with Us</a>
+        <a class="btn btn-ghost" href="workshops.html">Explore Workshops</a>
+        <a class="btn btn-ghost" href="https://wa.me/918080166955" target="_blank" rel="noopener">Chat on WhatsApp</a>
+      </div>
+    </div>
+  </section>
 
-  <footer>© 2026 Let's Attune · shilpa@letsattune.com</footer>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <div class="name">Let's Attune</div>
+          <p style="color:rgba(255,255,255,0.7)">Reflective, emotionally safe spaces to pause, understand yourself, and move forward with clarity.</p>
+          <img class="footer-qr" src="assets/qr.png" alt="WhatsApp QR — Let's Attune" />
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="coach.html">About the Coach</a></li>
+            <li><a href="workshops.html">Workshops</a></li>
+            <li><a href="https://forms.gle/p1m3mecHvxKqkyVN9" target="_blank" rel="noopener">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://wa.me/918080166955" target="_blank" rel="noopener">WhatsApp / Call</a><br>+91 8080166955</li>
+            <li><a href="mailto:shilpa@letsattune.com">shilpa@letsattune.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-motto">EXPRESS : EXPLORE : EMPOWER : EVOLVE</div>
+      <div class="footer-copy">© <span data-year>2026</span> Let's Attune · Shilpa Jahagirdar, PCC · ICF Certified</div>
+    </div>
+  </footer>
 
-  <script>
-    // Sticky header
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      header.classList.toggle('scrolled', window.scrollY > 50);
-    });
-
-    // Typewriter
-    const el = document.getElementById('typewriter');
-    const text1 = 'Tune Into ';
-    const text2 = 'Yourself';
-    let i = 0;
-    function type() {
-      if (i <= text1.length + text2.length) {
-        const t1 = text1.slice(0, Math.min(i, text1.length));
-        const t2 = text2.slice(0, Math.max(0, i - text1.length));
-        el.innerHTML = t1 + (t2 ? `<span class="accent">${t2}</span>` : '') + '<span class="cursor"></span>';
-        i++;
-        setTimeout(type, 80);
-      }
-    }
-    setTimeout(type, 400);
-
-    // Scroll fade-in
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.15 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-    // Carousel
-    let current = 0;
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.dot');
-    function goTo(n) {
-      slides[current].classList.remove('active');
-      dots[current].classList.remove('active');
-      current = n;
-      slides[current].classList.add('active');
-      dots[current].classList.add('active');
-    }
-    setInterval(() => goTo((current + 1) % slides.length), 4500);
-  </script>
-
+  <script src="main.js"></script>
 </body>
 </html>
