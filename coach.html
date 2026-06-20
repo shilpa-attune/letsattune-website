@@ -6,11 +6,7 @@
   <title>About the Coach — Let's Attune</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Poppins', sans-serif;
@@ -21,135 +17,246 @@
       flex-direction: column;
     }
 
+    /* ── HEADER ── */
     header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 1.5rem 3rem;
-      border-bottom: 1px solid #e4ebe4;
+      background: #f4f7f4;
+      border-bottom: 1px solid transparent;
+      transition: padding 0.3s, box-shadow 0.3s, border-color 0.3s;
+      z-index: 100;
+    }
+
+    header.scrolled {
+      padding: 0.8rem 3rem;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+      border-color: #e4ebe4;
     }
 
     header img {
       width: 80px;
-      height: auto;
+      transition: width 0.3s;
     }
+
+    header.scrolled img { width: 55px; }
 
     header nav a {
       font-size: 0.9rem;
-      font-weight: 400;
       color: #1a2a4a;
       text-decoration: none;
       letter-spacing: 0.04em;
       transition: color 0.2s;
     }
 
-    header nav a:hover {
-      color: #e03a4a;
-    }
+    header nav a:hover { color: #e03a4a; }
 
-    main {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 4rem 2rem;
-    }
-
-    .container {
-      max-width: 620px;
+    /* ── HERO ── */
+    .hero {
+      padding-top: 8rem;
+      padding-bottom: 4rem;
       text-align: center;
+      background: #1a2a4a;
+      color: #fff;
     }
 
-    .photo {
+    .photo-wrap {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+    }
+
+    .photo-wrap img {
       width: 160px;
       height: 160px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid #1a2a4a;
-      margin-bottom: 1.5rem;
+      border: 4px solid #e03a4a;
+      display: block;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
 
-    h1 {
-      font-size: 2rem;
+    .photo-wrap img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 40px rgba(224,58,74,0.35);
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
       font-weight: 600;
-      color: #1a2a4a;
-      margin-bottom: 0.3rem;
-      letter-spacing: -0.01em;
+      margin-bottom: 0.4rem;
     }
 
-    .title {
-      font-size: 0.85rem;
-      font-weight: 400;
+    .hero .role {
+      font-size: 0.82rem;
       color: #e03a4a;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      margin-bottom: 1.5rem;
+    }
+
+    /* ── BIO ── */
+    .bio {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .bio p {
+      font-size: 1rem;
+      font-weight: 300;
+      color: #444;
+      line-height: 1.9;
+      margin-bottom: 1.3rem;
+    }
+
+    .bio p em {
+      color: #1a2a4a;
+      font-style: italic;
     }
 
     .divider {
       width: 40px;
       height: 3px;
-      background-color: #e03a4a;
-      margin: 0 auto 1.8rem;
+      background: #e03a4a;
+      margin: 0 auto 2.5rem;
     }
 
-    p {
-      font-size: 1rem;
-      font-weight: 300;
-      color: #444;
-      line-height: 1.9;
-      text-align: left;
-      margin-bottom: 1.2rem;
+    /* ── TAGS ── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 2rem;
     }
 
-    p em {
-      color: #1a2a4a;
-      font-style: italic;
+    .tag {
+      background: #1a2a4a;
+      color: #fff;
+      font-size: 0.78rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 20px;
+      letter-spacing: 0.04em;
+      transition: background 0.2s;
     }
+
+    .tag:hover { background: #e03a4a; }
+
+    /* ── CTA ── */
+    .cta-wrap {
+      text-align: center;
+      padding: 3rem 2rem 5rem;
+    }
+
+    .cta-wrap a {
+      display: inline-block;
+      padding: 0.85rem 2.2rem;
+      background: #e03a4a;
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      border-radius: 2px;
+      transition: background 0.3s;
+    }
+
+    .cta-wrap a:hover { background: #1a2a4a; }
 
     footer {
+      margin-top: auto;
       text-align: center;
       padding: 1.5rem;
       font-size: 0.8rem;
       color: #aaa;
       border-top: 1px solid #e4ebe4;
     }
+
+    @media (max-width: 600px) {
+      header { padding: 1rem 1.5rem; }
+    }
   </style>
 </head>
 <body>
 
-  <header>
+  <header id="header">
     <img src="assets/Lets Attune logo.png" alt="Let's Attune" />
     <nav>
       <a href="index.html">← Home</a>
     </nav>
   </header>
 
-  <main>
-    <div class="container">
-      <img src="assets/shilpa.jpeg" alt="Shilpa Jahagirdar" class="photo" />
-      <h1>Shilpa Jahagirdar</h1>
-      <div class="title">PCC Coach · ICF Certified</div>
-      <div class="divider"></div>
-
-      <p>
-        A PCC Coach certified by ICF, Shilpa comes with an IT background and is also trained in Shadow Work, Emotional Intelligence, Positive Psychology, and NLP — with over 10 years of experience in Corporate Training and Leadership Development.
-      </p>
-      <p>
-        Once she began her coach training, life made more sense. She went deeper into the world of psychology and realised this was her purpose — to just be there for people. To be a listening ear, without advice, without judgement. Be it a simple one-day incident or a complex long-term plan, it's about figuring out what is happening within and what you are really looking for.
-      </p>
-      <p>
-        Her specialty is helping people identify and achieve personal goals by coping with constant worry, overthinking, distress, anxiety, or stress. She also does extensive work with an NGO in areas of mental distress and suicide prevention, and has an inclination towards energy healing and spirituality.
-      </p>
-      <p>
-        <em>Inspiration · Love · Freedom · Joy · Positivity — these are lifelines for me. I trust every individual is unique. Come with me on that journey to explore self deeper...</em>
-      </p>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="photo-wrap">
+      <img src="assets/shilpa.jpeg" alt="Shilpa Jahagirdar" />
     </div>
-  </main>
+    <h1>Shilpa Jahagirdar</h1>
+    <div class="role">PCC Coach · ICF Certified</div>
+  </div>
 
-  <footer>
-    © 2026 Let's Attune · shilpa@letsattune.com
-  </footer>
+  <!-- BIO -->
+  <div class="bio">
+    <div class="divider"></div>
+
+    <div class="fade-in">
+      <div class="tags">
+        <span class="tag">Shadow Work</span>
+        <span class="tag">Emotional Intelligence</span>
+        <span class="tag">Positive Psychology</span>
+        <span class="tag">NLP Practitioner</span>
+        <span class="tag">Transactional Analysis</span>
+        <span class="tag">Enneagram</span>
+        <span class="tag">Energy Healing</span>
+      </div>
+    </div>
+
+    <div class="fade-in">
+      <p>A PCC Coach certified by ICF, Shilpa comes with an IT background and over 10 years of experience in Corporate Training and Leadership Development. She is trained in Shadow Work, Emotional Intelligence, Positive Psychology, and is an NLP Practitioner.</p>
+    </div>
+
+    <div class="fade-in">
+      <p>Once she began her coach training, life made more sense. She went deeper into the world of psychology and realised this was her true purpose — to just be there for people. To be a listening ear, without advice, without judgement. Be it a simple one-day incident or a complex long-term plan, it's about figuring out what is happening within and what you are really looking for.</p>
+    </div>
+
+    <div class="fade-in">
+      <p>Her specialty is helping people identify and achieve personal goals by coping with constant worry, overthinking, distress, anxiety, or stress. She also does extensive work with an NGO in areas of mental distress and suicide prevention, and has an inclination towards energy healing and spirituality.</p>
+    </div>
+
+    <div class="fade-in">
+      <p><em>Inspiration · Love · Freedom · Joy · Positivity — these are lifelines for me. I trust every individual is unique. Come with me on that journey to explore self deeper...</em></p>
+    </div>
+  </div>
+
+  <div class="cta-wrap fade-in">
+    <a href="https://forms.gle/p1m3mecHvxKqkyVN9" target="_blank">Book a Session with Shilpa</a>
+  </div>
+
+  <footer>© 2026 Let's Attune · shilpa@letsattune.com</footer>
+
+  <script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
 
 </body>
 </html>

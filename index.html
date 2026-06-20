@@ -6,92 +6,374 @@
   <title>Let's Attune</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Poppins', sans-serif;
       background-color: #f4f7f4;
       color: #1a2a4a;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      overflow-x: hidden;
     }
 
+    /* ── HEADER ── */
     header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 1.5rem 3rem;
-      border-bottom: 1px solid #e4ebe4;
+      background: #f4f7f4;
+      border-bottom: 1px solid transparent;
+      transition: padding 0.3s, box-shadow 0.3s, border-color 0.3s;
+      z-index: 100;
+    }
+
+    header.scrolled {
+      padding: 0.8rem 3rem;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+      border-color: #e4ebe4;
     }
 
     header img {
       width: 80px;
-      height: auto;
+      transition: width 0.3s;
     }
+
+    header.scrolled img { width: 55px; }
 
     header nav a {
       font-size: 0.9rem;
-      font-weight: 400;
       color: #1a2a4a;
       text-decoration: none;
       letter-spacing: 0.04em;
+      margin-left: 2rem;
       transition: color 0.2s;
     }
 
-    header nav a:hover {
-      color: #e03a4a;
-    }
+    header nav a:hover { color: #e03a4a; }
 
-    main {
-      flex: 1;
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 4rem 2rem;
-    }
-
-    .container {
-      max-width: 620px;
       text-align: center;
+      padding: 2rem;
+      padding-top: 6rem;
     }
 
-    h1 {
-      font-size: 3rem;
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      min-height: 4rem;
+    }
+
+    .hero h1 span.accent { color: #e03a4a; }
+
+    .cursor {
+      display: inline-block;
+      width: 3px;
+      background: #e03a4a;
+      animation: blink 0.7s infinite;
+      margin-left: 2px;
+      vertical-align: middle;
+      height: 2.8rem;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .hero .divider {
+      width: 40px;
+      height: 3px;
+      background: #e03a4a;
+      margin: 1.5rem auto;
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: expandLine 0.8s 2.2s forwards;
+    }
+
+    @keyframes expandLine { to { transform: scaleX(1); } }
+
+    .hero p {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: #444;
+      line-height: 1.9;
+      max-width: 560px;
+      opacity: 0;
+      animation: fadeUp 0.8s 2.4s forwards;
+    }
+
+    .hero .cta {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.85rem 2.2rem;
+      background: #1a2a4a;
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      border-radius: 2px;
+      opacity: 0;
+      animation: fadeUp 0.8s 2.8s forwards;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero .cta::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: #e03a4a;
+      transform: translateX(-100%);
+      transition: transform 0.3s;
+      z-index: 0;
+    }
+
+    .hero .cta:hover::after { transform: translateX(0); }
+    .hero .cta span { position: relative; z-index: 1; }
+
+    /* ── FADE IN ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── SECTION BASE ── */
+    .section {
+      padding: 5rem 2rem;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: #e03a4a;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .section h2 {
+      font-size: 2rem;
       font-weight: 600;
       color: #1a2a4a;
-      line-height: 1.15;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
     }
 
-    h1 span {
-      color: #e03a4a;
+    .section p {
+      font-size: 1rem;
+      font-weight: 300;
+      color: #444;
+      line-height: 1.9;
+      margin-bottom: 1rem;
     }
 
     .divider {
       width: 40px;
       height: 3px;
-      background-color: #e03a4a;
-      margin: 1.5rem auto;
+      background: #e03a4a;
+      margin-bottom: 2rem;
     }
 
-    p {
+    /* ── COACHING CARDS ── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 4px;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.09);
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1a2a4a;
+      margin-bottom: 0.6rem;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .card .icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.8rem;
+    }
+
+    /* ── VALUES ── */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.2rem;
+      margin-top: 2.5rem;
+    }
+
+    .value {
+      background: #1a2a4a;
+      color: #fff;
+      border-radius: 4px;
+      padding: 1.5rem;
+      transition: background 0.3s;
+    }
+
+    .value:hover { background: #e03a4a; }
+
+    .value h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .value p {
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-section {
+      background: #1a2a4a;
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .testimonials-section .section-label {
+      color: #e03a4a;
+      display: block;
+      margin-bottom: 0.8rem;
+    }
+
+    .testimonials-section h2 {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 3rem;
+    }
+
+    .carousel {
+      max-width: 620px;
+      margin: 0 auto;
+      min-height: 180px;
+    }
+
+    .slide { display: none; animation: fadeSlide 0.6s ease; }
+    .slide.active { display: block; }
+
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .slide blockquote {
       font-size: 1.05rem;
       font-weight: 300;
-      color: #444;
       line-height: 1.9;
+      color: #e8f0e8;
+      margin-bottom: 1.2rem;
     }
 
-    p strong {
-      color: #1a2a4a;
-      font-weight: 400;
+    .slide blockquote::before {
+      content: '"';
+      font-size: 3rem;
+      color: #e03a4a;
+      line-height: 0;
+      vertical-align: -0.6rem;
+      margin-right: 0.2rem;
     }
 
+    .slide cite {
+      font-size: 0.85rem;
+      color: #e03a4a;
+      letter-spacing: 0.06em;
+      font-style: normal;
+    }
+
+    .dots {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #fff;
+      opacity: 0.3;
+      cursor: pointer;
+      transition: opacity 0.3s;
+    }
+
+    .dot.active { opacity: 1; background: #e03a4a; }
+
+    /* ── CONTACT ── */
+    .contact-section {
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+
+    .contact-section h2 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+
+    .contact-section p {
+      font-size: 1rem;
+      font-weight: 300;
+      color: #555;
+      margin-bottom: 2rem;
+    }
+
+    .contact-section a.btn {
+      display: inline-block;
+      padding: 0.85rem 2.2rem;
+      background: #e03a4a;
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      border-radius: 2px;
+      transition: background 0.3s;
+    }
+
+    .contact-section a.btn:hover { background: #1a2a4a; }
+
+    /* ── FOOTER ── */
     footer {
       text-align: center;
       padding: 1.5rem;
@@ -99,30 +381,180 @@
       color: #aaa;
       border-top: 1px solid #e4ebe4;
     }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2.2rem; }
+      header { padding: 1rem 1.5rem; }
+      header.scrolled { padding: 0.6rem 1.5rem; }
+    }
   </style>
 </head>
 <body>
 
-  <header>
+  <header id="header">
     <img src="assets/Lets Attune logo.png" alt="Let's Attune" />
     <nav>
       <a href="coach.html">About the Coach</a>
+      <a href="https://forms.gle/p1m3mecHvxKqkyVN9" target="_blank">Get in Touch</a>
     </nav>
   </header>
 
-  <main>
-    <div class="container">
-      <h1>Tune Into <span>Yourself</span></h1>
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <h1 id="typewriter"><span class="cursor"></span></h1>
       <div class="divider"></div>
-      <p>
-        Coaching is a powerful tool to unlock the answers within yourself. At Let's Attune, we offer a safe, non-judgmental space to help you gain clarity, break past limiting beliefs, and step into action — whether it's personal growth, career transitions, or overall well-being. <strong>The answers are within you — let's uncover them together.</strong>
-      </p>
+      <p>There is no way to happiness — happiness is the way. Coaching helps you unlock the answers already within you.</p>
+      <a href="https://forms.gle/p1m3mecHvxKqkyVN9" target="_blank" class="cta"><span>Get Coached →</span></a>
     </div>
-  </main>
+  </div>
 
-  <footer>
-    © 2026 Let's Attune · shilpa@letsattune.com
-  </footer>
+  <!-- WHY COACHING -->
+  <div class="section">
+    <div class="fade-in">
+      <div class="section-label">The Why</div>
+      <h2>Looking for answers?</h2>
+      <div class="divider"></div>
+      <p>Coaching is a conversation that brings clarity to your situation and helps you see things from a different perspective. It's different from counselling or mentoring, yet similar in its solution-focused intent.</p>
+      <p>Through coaching, you gain self-awareness, confidence, and actionable strategies to overcome challenges and achieve your goals — making it ideal for individuals, groups, teams, or families.</p>
+    </div>
+  </div>
+
+  <!-- COACHING TYPES -->
+  <div class="section" style="padding-top: 0;">
+    <div class="fade-in">
+      <div class="section-label">How We Work</div>
+      <h2>Choose Your Journey</h2>
+      <div class="divider"></div>
+      <div class="cards">
+        <div class="card">
+          <div class="icon">🎧</div>
+          <h3>Listening Support</h3>
+          <p>A safe, non-judgmental space to share thoughts and challenges without advice. Process emotions and gain clarity at your own pace.</p>
+        </div>
+        <div class="card">
+          <div class="icon">✨</div>
+          <h3>Experience Coaching</h3>
+          <p>A confidential hour-long session to gain clarity, set actionable goals, and uncover strategies to overcome the challenges you face.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🌱</div>
+          <h3>Transformative Coaching</h3>
+          <p>Long-term engagement with continuous support, accountability, and growth across multiple sessions. Lasting, sustainable change.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🤝</div>
+          <h3>Group Coaching</h3>
+          <p>A collaborative confidential space where group dynamics enhance accountability, motivation, and new perspectives.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VALUES -->
+  <div class="section">
+    <div class="fade-in">
+      <div class="section-label">What We Stand For</div>
+      <h2>Our Values</h2>
+      <div class="divider"></div>
+      <div class="values-grid">
+        <div class="value">
+          <h4>Connection</h4>
+          <p>Building meaningful, supportive relationships that contribute to deep healing.</p>
+        </div>
+        <div class="value">
+          <h4>Inclusivity</h4>
+          <p>A safe, non-judgmental space for everyone, regardless of their life story.</p>
+        </div>
+        <div class="value">
+          <h4>Holistic</h4>
+          <p>Focusing on the whole person — body, mind, and spirit.</p>
+        </div>
+        <div class="value">
+          <h4>Resilience</h4>
+          <p>Helping you develop inner strength to overcome challenges and thrive.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div class="testimonials-section">
+    <span class="section-label">Voices</span>
+    <h2>What Clients Say</h2>
+    <div class="carousel">
+      <div class="slide active">
+        <blockquote>I consider myself fortunate — no other person could ever be a coach for me so perfectly. I am now capable of expressing myself clearly, getting things done my way, and getting the recognition I deserve.</blockquote>
+        <cite>— VP, Product and Sales, Chennai</cite>
+      </div>
+      <div class="slide">
+        <blockquote>Shilpa empowered people with life skills and built awareness to take one step at a time. She went beyond her commitment out of love to help people. She is a rare gem genuinely making a difference.</blockquote>
+        <cite>— Founder, NGO, Pune</cite>
+      </div>
+    </div>
+    <div class="dots">
+      <div class="dot active" onclick="goTo(0)"></div>
+      <div class="dot" onclick="goTo(1)"></div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact-section fade-in">
+    <div class="section-label">Let's Connect</div>
+    <h2>Ready to Tune In?</h2>
+    <p>Reach out at <strong>shilpa@letsattune.com</strong> or +8080166955</p>
+    <a href="https://forms.gle/p1m3mecHvxKqkyVN9" target="_blank" class="btn">Book a Session</a>
+  </div>
+
+  <footer>© 2026 Let's Attune · shilpa@letsattune.com</footer>
+
+  <script>
+    // Sticky header
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Typewriter
+    const el = document.getElementById('typewriter');
+    const text1 = 'Tune Into ';
+    const text2 = 'Yourself';
+    let i = 0;
+    function type() {
+      if (i <= text1.length + text2.length) {
+        const t1 = text1.slice(0, Math.min(i, text1.length));
+        const t2 = text2.slice(0, Math.max(0, i - text1.length));
+        el.innerHTML = t1 + (t2 ? `<span class="accent">${t2}</span>` : '') + '<span class="cursor"></span>';
+        i++;
+        setTimeout(type, 80);
+      }
+    }
+    setTimeout(type, 400);
+
+    // Scroll fade-in
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Carousel
+    let current = 0;
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    function goTo(n) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = n;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+    setInterval(() => goTo((current + 1) % slides.length), 4500);
+  </script>
 
 </body>
 </html>
