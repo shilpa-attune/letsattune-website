@@ -48,7 +48,7 @@ body {
    Crisp brief: elegance from serif CONTRAST, not huge sizes. */
 h1, h2, h3, .serif { font-family: var(--ff-serif); font-weight: 600; color: var(--navy); letter-spacing: -0.01em; line-height: 1.15; font-optical-sizing: auto; }
 
-h1 { font-size: clamp(2rem, 4.5vw, 2.6rem); }
+h1 { font-size: clamp(2rem, 4.5vw, 2.6rem); font-variation-settings: 'WONK' 0; }
 h2 { font-size: clamp(1.55rem, 3.2vw, 2rem); }
 h3 { font-size: 1.12rem; font-family: var(--ff-sans); font-weight: 600; }
 
@@ -78,8 +78,19 @@ a { color: inherit; text-decoration: none; }
 .center .lead { margin-left: auto; margin-right: auto; }
 
 .band-sage  { background: var(--bg-sage); }
+.band-light { background: var(--bg); }
 .band-white { background: var(--white); }
 .band-navy  { background: var(--navy); }
+.band-steel { background: var(--steel); }
+.band-steel h1, .band-steel h2, .band-steel h3 { color: #fff; }
+.band-steel p { color: rgba(255,255,255,0.85); }
+.band-steel .rule { background: rgba(255,255,255,0.35); }
+.band-steel .eyebrow { color: rgba(255,255,255,0.65); }
+.band-green { background: var(--green); }
+.band-green h1, .band-green h2, .band-green h3 { color: #fff; }
+.band-green p { color: rgba(255,255,255,0.85); }
+.band-green .rule { background: rgba(255,255,255,0.35); }
+.band-green .btn-ghost { color: #fff; border-color: rgba(255,255,255,0.65); }
 .band-navy h1, .band-navy h2, .band-navy h3 { color: #fff; }
 .band-navy p { color: rgba(255,255,255,0.78); }
 .band-navy .eyebrow { color: var(--sage); }
@@ -207,7 +218,11 @@ a { color: inherit; text-decoration: none; }
 .manifesto .m-close { font-style: normal; font-weight: 700; margin-top: 1.2rem; font-size: 1.1rem; }
 
 /* ── CTA STRIP ────────────────────────────────────────────── */
-.cta-strip { text-align: center; }
+.cta-strip { text-align: center; background: var(--white); }
+.cta-strip h2 { color: var(--navy); }
+.cta-strip p { color: var(--muted); }
+.cta-strip .btn-ghost { color: var(--navy); border-color: var(--navy); }
+.cta-strip .btn-ghost:hover { background: var(--navy); color: #fff; }
 .cta-strip .btnrow { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; margin-top: 1.8rem; }
 
 /* ── FOOTER ───────────────────────────────────────────────── */
@@ -223,6 +238,55 @@ a { color: inherit; text-decoration: none; }
 .footer-motto { text-align: center; letter-spacing: 0.28em; font-size: 0.72rem; color: var(--sage); margin-top: 2.4rem; padding-top: 1.4rem; border-top: 1px solid rgba(255,255,255,0.12); }
 .footer-copy { text-align: center; font-size: 0.76rem; color: rgba(255,255,255,0.5); margin-top: 0.8rem; }
 
+/* ── COACH OPENING QUOTE ──────────────────────────────────── */
+.coach-opening-quote { padding: 1.2rem 0; text-align: center; }
+.coq-text { font-family: var(--ff-serif); font-style: italic; font-size: 1.05rem; color: #fff; line-height: 1.7; margin: 0; }
+.coq-attr { font-size: 0.74rem; color: var(--sage); letter-spacing: 0.05em; margin-top: 0.35rem; }
+
+/* ── LIFELINES ─────────────────────────────────────────────── */
+.lifelines { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.4rem 1rem; margin-bottom: 1rem; }
+.lifeline { font-size: 0.92rem; font-weight: 700; color: var(--coral); letter-spacing: 0.06em; text-transform: uppercase; }
+.lifeline-dot { color: var(--sage); margin: 0 0.1rem; }
+.lifeline-note { font-family: var(--ff-serif); font-style: italic; font-size: 1rem; color: var(--navy); line-height: 1.8; }
+
+/* ── BELIEF BAND ───────────────────────────────────────────── */
+.coach-belief { background: var(--steel); padding: 1.6rem 0; text-align: center; }
+.belief-text { font-family: var(--ff-serif); font-style: italic; font-size: 1rem; color: #fff; line-height: 1.8; margin: 0; }
+.belief-attr { font-size: 0.74rem; color: rgba(255,255,255,0.75); margin-top: 0.5rem; letter-spacing: 0.04em; }
+
+/* ── VALUES CIRCLES ────────────────────────────────────────── */
+.values-circles { display: flex; flex-wrap: wrap; justify-content: center; margin-top: 1.8rem; }
+.vcircle { width: 160px; height: 160px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 1rem; margin: -10px; border: 4px solid var(--white); }
+.vcircle--sage  { background: var(--bg-sage); }
+.vcircle--blue  { background: #e8f0f7; }
+.vcircle--coral { background: #fdf0f1; }
+.vcircle strong { font-size: 0.82rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 0.25rem; line-height: 1.3; }
+.vcircle span   { font-size: 0.66rem; color: var(--steel); line-height: 1.4; }
+
+/* ── PHILOSOPHY FLOW ───────────────────────────────────────── */
+.phil-flow { display: flex; flex-direction: column; align-items: flex-start; gap: 0; margin-top: 1rem; }
+.phil-step { display: flex; align-items: center; gap: 1.2rem; }
+.phil-oval { background: var(--navy); border-radius: 30px; padding: 0.6rem 1.6rem; font-family: var(--ff-serif); font-size: 1.05rem; font-weight: 600; color: #fff; flex-shrink: 0; min-width: 130px; display: flex; align-items: center; justify-content: center; text-align: center; }
+.phil-desc { font-size: 0.82rem; color: var(--navy); line-height: 1.55; border-left: 2px solid var(--sage); padding-left: 1rem; margin: 0; }
+.phil-arrow-down { padding: 0.2rem 0 0.2rem 55px; }
+
+/* ── COACH FLOAT BIO ──────────────────────────────────────── */
+.coach-float-wrap { overflow: hidden; }
+.coach-photo-float { float: left; width: clamp(200px, 30%, 280px); height: 320px; border-radius: var(--radius); margin: 0 2rem 1.5rem 0; object-fit: cover; object-position: center 5%; box-shadow: 0 8px 32px rgba(29,53,87,0.18); display: block; }
+
+/* lifelines inside bio */
+.lifelines-inline { margin-top: 1.4rem; padding: 1rem 1.2rem; background: rgba(255,255,255,0.55); border-left: 3px solid var(--coral); border-radius: 0 8px 8px 0; }
+.lifelines-label { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--steel); margin-bottom: 0.5rem; }
+.lifelines { display: flex; flex-wrap: wrap; gap: 0.3rem 0.8rem; margin-bottom: 0.6rem; }
+.lifeline { font-size: 1rem; font-weight: 700; color: var(--coral); }
+.lifeline-dot { color: var(--sage); }
+.lifeline-note { font-family: var(--ff-serif); font-style: italic; font-size: 0.9rem; color: var(--navy); line-height: 1.7; margin: 0; text-align: center; }
+
+/* belief blended into philosophy */
+.phil-belief { margin-top: 1.6rem; padding: 1.1rem 1.4rem; border-left: 3px solid rgba(255,255,255,0.5); }
+.phil-belief p { font-family: var(--ff-serif); font-style: italic; font-size: 0.95rem; color: var(--coral); line-height: 1.75; margin: 0; }
+.phil-belief span { font-size: 0.72rem; color: rgba(255,255,255,0.55); letter-spacing: 0.05em; margin-top: 0.4rem; display: block; }
+
 /* ── COACH PAGE (bio fits one screen) ─────────────────────── */
 .coach-hero { min-height: calc(100svh - 64px); display: flex; align-items: center; }
 .coach-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(1.5rem, 4vw, 3.4rem); align-items: center; width: 100%; }
@@ -235,6 +299,7 @@ a { color: inherit; text-decoration: none; }
 .cred { background: var(--navy); color: #fff; font-size: 0.74rem; letter-spacing: 0.04em; padding: 0.32rem 0.85rem; border-radius: 20px; }
 .coach-bio .btnrow { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.4rem; }
 .tagset { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-top: 1.6rem; }
+.modalities { text-align: center; margin-top: 1.6rem; font-size: 0.88rem; color: var(--steel); line-height: 2; }
 .tagset .pill { background: var(--white); }
 .bloglinks { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.4rem; }
 
