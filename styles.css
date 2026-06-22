@@ -72,7 +72,7 @@ a { color: inherit; text-decoration: none; }
 
 /* ── LAYOUT ───────────────────────────────────────────────── */
 .wrap { max-width: var(--maxw); margin: 0 auto; padding-left: var(--pad); padding-right: var(--pad); }
-.section { padding: clamp(3.5rem, 7vw, 5.5rem) 0; }
+.section { padding: clamp(2rem, 4vw, 3rem) 0; }
 .center { text-align: center; }
 .lead { font-size: 1.05rem; max-width: 620px; }
 .center .lead { margin-left: auto; margin-right: auto; }
@@ -86,7 +86,7 @@ a { color: inherit; text-decoration: none; }
 
 /* ── ANNOUNCEMENT BAR ─────────────────────────────────────── */
 .announce {
-  background: #1a7a6e;
+  background: #e05c72;
   color: #eafaf6;
   font-size: 0.82rem;
   letter-spacing: 0.01em;
@@ -97,8 +97,7 @@ a { color: inherit; text-decoration: none; }
 }
 .announce strong { color: #fff; font-weight: 600; }
 .announce a { color: #fff; font-weight: 700; padding: 3px 14px; border: 1.5px solid rgba(255,255,255,0.8); border-radius: 20px; text-decoration: none; animation: flashBtn 1.4s ease-in-out infinite; }
-.announce .pulse { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--coral); margin-right: 0.5rem; vertical-align: middle; animation: pulse 1.8s infinite; }
-@keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(230,57,70,0.6);} 50% { box-shadow: 0 0 0 6px rgba(230,57,70,0);} }
+.announce .announce-star { font-size: 1rem; margin-right: 0.4rem; vertical-align: middle; }
 @keyframes flashBtn { 0%,100% { background: rgba(255,255,255,0.15); color: #fff; } 50% { background: #fff; color: #0f6e56; } }
 
 /* ── HEADER ───────────────────────────────────────────────── */
@@ -138,22 +137,23 @@ a { color: inherit; text-decoration: none; }
 .menu-toggle span { width: 24px; height: 2px; background: var(--navy); transition: .3s; }
 
 /* ── HERO (forest, atmospheric) ───────────────────────────── */
-.hero { position: relative; min-height: 60vh; display: flex; align-items: center; color: #fff; overflow: hidden; }
+.hero { position: relative; min-height: 42vh; display: flex; align-items: center; color: #fff; overflow: hidden; }
 .hero__bg { position: absolute; inset: 0; z-index: 0;
-  background: url('assets/the-place-within.jpeg') center/cover no-repeat;
-  filter: blur(4px) saturate(1.1); transform: scale(1.08); }
+  background: url('assets/the-place-within.jpeg') center 60%/cover no-repeat;
+  filter: blur(3px) saturate(1.15); transform: scale(1.08); }
 .hero__tint { position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(150deg, rgba(29,53,87,0.92) 0%, rgba(14,79,71,0.78) 55%, rgba(29,53,87,0.85) 100%); }
+  background: linear-gradient(150deg, rgba(29,53,87,0.78) 0%, rgba(14,79,71,0.64) 55%, rgba(29,53,87,0.74) 100%); }
 .hero__grain { position: absolute; inset: 0; z-index: 2; opacity: 0.06; pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
-.hero .wrap { position: relative; z-index: 3; padding-top: 2.6rem; padding-bottom: 2.6rem; }
-.hero h1 { color: #fff; max-width: 16ch; }
-.hero .accent { color: var(--coral); font-style: italic; }
+.hero .wrap { position: relative; z-index: 3; padding-top: 2.6rem; padding-bottom: 2.6rem; text-align: center; }
+.hero h1 { color: #fff; max-width: 16ch; margin-left: auto; margin-right: auto; }
+.hero .accent { color: #fff; font-style: italic; }
 .hero__quote { font-family: var(--ff-serif); font-style: italic; font-size: 1.05rem; color: var(--sage); margin: 0.9rem 0 0.4rem; }
-.hero__sub { max-width: 48ch; margin-bottom: 1.6rem; }
-.hero__sub p { color: #fff; font-weight: 400; text-shadow: 0 1px 12px rgba(0,0,0,0.6); }
-.hero__sub p + p { margin-top: 0.7rem; }
-.hero__cta { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+.hero__tagline { font-family: var(--ff-serif); font-style: italic; font-size: 1.1rem; color: rgba(255,255,255,0.88); margin: 1rem auto 0; text-shadow: 0 1px 12px rgba(0,0,0,0.5); }
+.hero-intro { padding-top: 2rem; padding-bottom: 2rem; text-align: center; }
+.hero-intro__text { color: var(--navy); font-size: 1rem; line-height: 1.75; }
+.hero-intro__text + .hero-intro__text { margin-top: 0.8rem; }
+.hero__cta { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; }
 .cursor { display: inline-block; width: 3px; height: 1em; background: var(--coral); margin-left: 3px; vertical-align: -0.12em; animation: blink .8s steps(1) infinite; }
 @keyframes blink { 50% { opacity: 0; } }
 
@@ -162,11 +162,14 @@ a { color: inherit; text-decoration: none; }
 .familiar { background: var(--white); border: 1px solid var(--line); border-left: 3px solid var(--coral); border-radius: var(--radius); padding: 1.1rem 1.3rem; font-style: italic; color: var(--navy); box-shadow: var(--shadow-sm); }
 
 /* ── STEPS (Understand → Explore → Align → Integrate) ─────── */
-.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1.2rem; margin-top: 2.4rem; counter-reset: step; }
-.step { position: relative; background: var(--white); border-radius: var(--radius); padding: 1.8rem 1.4rem 1.5rem; box-shadow: var(--shadow-sm); transition: transform .3s, box-shadow .3s; }
+.steps { display: flex; align-items: stretch; gap: 0; margin-top: 2.4rem; counter-reset: step; }
+.step { position: relative; background: var(--white); border-radius: var(--radius); padding: 1.8rem 1.4rem 1.5rem; box-shadow: var(--shadow-sm); transition: transform .3s, box-shadow .3s; flex: 1; min-width: 0; }
 .step:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
 .step::before { counter-increment: step; content: '0' counter(step); font-family: var(--ff-serif); font-size: 2.2rem; color: var(--sage); line-height: 1; display: block; margin-bottom: 0.6rem; }
 .step h3 { color: var(--navy); margin-bottom: 0.35rem; }
+.step-arrow { position: relative; z-index: 2; display: flex; align-items: flex-start; padding-top: 1.7rem; margin: 0 -10px; flex-shrink: 0; }
+.step-arrow__badge { width: 28px; height: 28px; background: var(--steel); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(69,123,157,0.4); }
+.step-arrow__badge svg { width: 13px; height: 13px; }
 
 /* ── SERVICE CARDS ────────────────────────────────────────── */
 .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.3rem; margin-top: 2.4rem; }
@@ -182,7 +185,7 @@ a { color: inherit; text-decoration: none; }
 /* ── WHO WE WORK WITH (pills) ─────────────────────────────── */
 .pills { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2rem; }
 .center .pills { justify-content: center; }
-.pill { background: var(--white); border: 1px solid var(--line); color: var(--navy); font-size: 0.84rem; padding: 0.5rem 1.05rem; border-radius: 30px; transition: background .2s, color .2s, transform .2s; }
+.pill { background: var(--white); border: 2px solid var(--steel); color: var(--navy); font-size: 0.84rem; font-weight: 500; padding: 0.5rem 1.05rem; border-radius: 30px; transition: background .2s, color .2s, transform .2s; }
 .pill:hover { background: var(--steel); color: #fff; transform: translateY(-2px); }
 
 /* ── COACH TEASER ─────────────────────────────────────────── */
@@ -197,9 +200,11 @@ a { color: inherit; text-decoration: none; }
 .quote cite { display: block; margin-top: 1rem; font-style: normal; font-size: 0.84rem; color: var(--sage); letter-spacing: 0.04em; }
 
 /* ── WHY (manifesto) ──────────────────────────────────────── */
-.manifesto p { font-family: var(--ff-serif); font-size: clamp(1.15rem, 2.4vw, 1.45rem); font-style: italic; line-height: 1.7; color: var(--navy); max-width: 720px; }
-.center .manifesto p { margin-left: auto; margin-right: auto; }
-.manifesto p + p { margin-top: 1.2rem; }
+.manifesto { text-align: center; }
+.manifesto p { font-family: var(--ff-serif); font-size: 1rem; line-height: 1.7; color: var(--navy); margin-top: 0.3rem; }
+.manifesto .m-statement { font-style: normal; font-weight: 700; margin-top: 1.2rem; }
+.manifesto .m-reason { font-style: italic; font-weight: 400; opacity: 0.82; }
+.manifesto .m-close { font-style: normal; font-weight: 700; margin-top: 1.2rem; font-size: 1.1rem; }
 
 /* ── CTA STRIP ────────────────────────────────────────────── */
 .cta-strip { text-align: center; }
