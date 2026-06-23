@@ -59,7 +59,7 @@ Sampled from the brand palette file (`assets/Lets attune pallet.jpeg`) — CSS v
 ```
 /
 ├── index.html          # Homepage
-├── coach.html          # About the Coach (bio fits one screen)
+├── about.html          # About — Shilpa's bio, values, philosophy, modalities
 ├── workshops.html      # Current workshop landing page
 ├── styles.css          # Shared design system
 ├── main.js             # Shared behaviour (header, nav, reveal, typewriter)
@@ -86,15 +86,19 @@ Sampled from the brand palette file (`assets/Lets attune pallet.jpeg`) — CSS v
 4. How We Help — Understand → Explore → Align → Integrate (4 steps)
 5. Ways We Support — Coaching · Workshops · Listening Circles · Corporate Programs
 6. Who We Work With — pills
-7. Coach teaser → coach.html
+7. Coach teaser → about.html
 8. Testimonials (2, static 2-up on navy)
 9. Why Let's Attune — serif manifesto
 10. CTA strip + footer (QR, links, motto)
 
-### coach.html — About the Coach
-- Split bio that fits one screen (hi-res photo + condensed bio + credentials + CTAs)
-- Beyond Coaching modality tags + blog links
-- CTA + footer
+### about.html — About
+- Opening quote (Thich Nhat Hanh, navy band)
+- Bio with floating photo, lifelines, personal note + Contact/WhatsApp buttons
+- Values in overlapping circles (Connection, Inclusivity, Holistic Approach, Resilience, Authenticity, Awareness)
+- Philosophy vertical ovals: Express → Explore → Empower → Evolve, with belief quote closing
+- Beyond Coaching — plain pipe-separated modalities (no pill buttons)
+- Blog links placeholder
+- Let's Connect CTA + footer
 
 ### workshops.html — Current workshop
 - Women's Reset & Reconnection Workshop (Jul 24–26 2026). Hardcoded but easy to swap.

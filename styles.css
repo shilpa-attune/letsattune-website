@@ -339,6 +339,26 @@ a { color: inherit; text-decoration: none; }
 
 @media (max-width: 680px) { .compare { grid-template-columns: 1fr; } }
 
+/* ── WORKSHOP REGISTRATION FORM ──────────────────────────── */
+.form-group { margin-bottom: 1.4rem; }
+.form-group label { display: block; font-size: 0.84rem; font-weight: 600; color: rgba(255,255,255,0.9); margin-bottom: 0.5rem; letter-spacing: 0.02em; }
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group select { width: 100%; padding: 0.7rem 1rem; border-radius: 8px; border: 1.5px solid rgba(255,255,255,0.25); background: rgba(255,255,255,0.1); color: #fff; font-family: var(--ff-sans); font-size: 0.92rem; transition: border-color .2s, background .2s; box-sizing: border-box; }
+.form-group input::placeholder { color: rgba(255,255,255,0.4); }
+.form-group input:focus,
+.form-group select:focus { outline: none; border-color: var(--sage); background: rgba(255,255,255,0.15); }
+.form-group select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='rgba(255,255,255,0.5)' d='M6 8L0 0h12z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; cursor: pointer; }
+.form-group select option { background: var(--navy); color: #fff; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.check-group { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; }
+.check-group--col { flex-direction: column; gap: 0.5rem; }
+.check-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; color: rgba(255,255,255,0.85); cursor: pointer; }
+.check-item input { accent-color: var(--coral); width: 16px; height: 16px; cursor: pointer; flex-shrink: 0; }
+.req { color: var(--coral); }
+@media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+
 /* ── SCROLL REVEAL ────────────────────────────────────────── */
 .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
 .reveal.in { opacity: 1; transform: none; }

@@ -131,16 +131,104 @@
     </div>
   </section>
 
-  <!-- REGISTER CTA -->
-  <section class="section band-navy cta-strip" id="register">
-    <div class="wrap reveal">
-      <div class="eyebrow" style="color:var(--sage)">24, 25 &amp; 26 July 2026 · 6:30pm - 9:00 pm IST · Online via Zoom</div>
-      <h2>Reserve your place</h2>
+  <!-- REGISTER FORM -->
+  <section class="section band-navy" id="register">
+    <div class="wrap reveal" style="max-width:680px">
+      <div class="eyebrow" style="color:var(--sage);text-align:center">24, 25 &amp; 26 July 2026 · 6:30pm – 9:00 pm IST · Online via Zoom</div>
+      <h2 style="text-align:center;color:#fff">Reserve your place</h2>
       <div class="rule" style="margin-left:auto;margin-right:auto"></div>
-      <p class="lead" style="margin-left:auto;margin-right:auto">Register through the form, or message us on WhatsApp and we'll guide you through it.</p>
-      <div class="btnrow">
-        <a class="btn btn-primary" href="https://forms.gle/p1m3mecHvxKqkyVN9" target="_blank" rel="noopener">Register Now</a>
-        <a class="btn btn-ghost" href="https://wa.me/918080166955" target="_blank" rel="noopener">Register via WhatsApp</a>
+      <p style="text-align:center;color:rgba(255,255,255,0.8);margin-bottom:2rem">Fill in the form below and we'll be in touch. You can also <a href="https://wa.me/918080166955" target="_blank" rel="noopener" style="color:var(--sage)">message us on WhatsApp</a> if you prefer.</p>
+
+      <form id="wk-form" action="https://formspree.io/f/mgojvkwl" method="POST" novalidate>
+
+        <div class="form-group">
+          <label for="name">Full Name <span class="req">*</span></label>
+          <input type="text" id="name" name="name" required placeholder="Your full name" />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Contact No. <span class="req">*</span></label>
+            <input type="tel" id="phone" name="phone" required placeholder="+91 98765 43210" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Id <span class="req">*</span></label>
+            <input type="email" id="email" name="email" required placeholder="you@example.com" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Age Group</label>
+          <div class="check-group">
+            <label class="check-item"><input type="radio" name="age_group" value="Less than 35" /> Less than 35</label>
+            <label class="check-item"><input type="radio" name="age_group" value="35–45" /> 35–45</label>
+            <label class="check-item"><input type="radio" name="age_group" value="46–55" /> 46–55</label>
+            <label class="check-item"><input type="radio" name="age_group" value="56–65" /> 56–65</label>
+            <label class="check-item"><input type="radio" name="age_group" value="65+" /> 65+</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Can we know a little about you? <span class="req">*</span></label>
+          <div class="check-group">
+            <label class="check-item"><input type="checkbox" name="about_you" value="Homemaker" /> Homemaker</label>
+            <label class="check-item"><input type="checkbox" name="about_you" value="Working Professional" /> Working Professional</label>
+            <label class="check-item"><input type="checkbox" name="about_you" value="Business Owner or Entrepreneur" /> Business Owner or Entrepreneur</label>
+            <label class="check-item"><input type="checkbox" name="about_you" value="Single Parent" /> Single Parent</label>
+            <label class="check-item"><input type="checkbox" name="about_you" value="Parent with Children at Home" /> Parent with Children at Home</label>
+            <label class="check-item"><input type="checkbox" name="about_you" value="Caregiver for Elder Parents" /> Caregiver for Elder Parents</label>
+            <label class="check-item"><input type="checkbox" name="about_you" value="Other" /> Other</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Which of these resonates most with you right now? <span class="req">*</span></label>
+          <div class="check-group check-group--col">
+            <label class="check-item"><input type="radio" name="resonates" value="I want to feel more confident in myself." /> I want to feel more confident in myself.</label>
+            <label class="check-item"><input type="radio" name="resonates" value="I want greater clarity about my next steps." /> I want greater clarity about my next steps.</label>
+            <label class="check-item"><input type="radio" name="resonates" value="I want to create more balance in my life." /> I want to create more balance in my life.</label>
+            <label class="check-item"><input type="radio" name="resonates" value="I want to reconnect with myself beyond my responsibilities." /> I want to reconnect with myself beyond my responsibilities.</label>
+            <label class="check-item"><input type="radio" name="resonates" value="I want to trust my decisions more." /> I want to trust my decisions more.</label>
+            <label class="check-item"><input type="radio" name="resonates" value="I am going through a period of change or transition." /> I am going through a period of change or transition.</label>
+            <label class="check-item"><input type="radio" name="resonates" value="I want to make more time for myself." /> I want to make more time for myself.</label>
+            <label class="check-item"><input type="radio" name="resonates" value="I want a safe space to reflect and grow." /> I want a safe space to reflect and grow.</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="source">How did you find out about this workshop? <span class="req">*</span></label>
+          <select id="source" name="source" required>
+            <option value="" disabled selected>Please select…</option>
+            <option>Instagram / Social Media</option>
+            <option>Friend or Family</option>
+            <option>Google Search</option>
+            <option>Let's Attune Website</option>
+            <option>WhatsApp</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <input type="hidden" name="workshop" value="Women's Reset and Reconnection Workshop — July 2026" />
+        <input type="hidden" name="_subject" value="New Workshop Registration — Women's Reset & Reconnection" />
+        <input type="text" name="_gotcha" style="display:none" />
+
+        <div style="text-align:center;margin-top:2rem">
+          <button type="submit" class="btn btn-primary" style="font-size:1rem;padding:0.9rem 2.4rem">Register Now →</button>
+        </div>
+
+        <p style="text-align:center;font-size:0.8rem;color:rgba(255,255,255,0.5);margin-top:1rem">Can't make it this time? Write to us at <a href="mailto:shilpa@letsattune.com" style="color:var(--sage)">shilpa@letsattune.com</a> and we'll keep you in the loop for the next one.</p>
+      </form>
+
+      <!-- Success message (shown after submit) -->
+      <div id="wk-success" style="display:none;text-align:center;padding:2rem 0">
+        <div style="font-size:2.5rem;margin-bottom:1rem">🌿</div>
+        <h3 style="color:#fff;margin-bottom:0.6rem">Thank you for registering!</h3>
+        <p style="color:rgba(255,255,255,0.85);margin-bottom:1.6rem">To confirm your spot, please complete the payment of <strong style="color:var(--sage)">₹2999/-</strong><br>(Early bird ₹1999/- before July 15th)</p>
+        <p style="color:rgba(255,255,255,0.7);font-size:0.9rem;margin-bottom:1.4rem">Scan the QR code below with any UPI app, then share your UTR number on WhatsApp.</p>
+        <img src="assets/qr.png" alt="UPI Payment QR — Shilpa J" style="width:180px;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.3);margin-bottom:1.4rem" />
+        <div>
+          <a class="btn btn-ghost" href="https://wa.me/918080166955" target="_blank" rel="noopener" style="color:#fff;border-color:rgba(255,255,255,0.6)">Share UTR on WhatsApp</a>
+        </div>
       </div>
     </div>
   </section>
