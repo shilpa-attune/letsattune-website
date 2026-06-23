@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | Let's Attune</title>
+  <meta name="description" content="Get in touch with Shilpa Jahagirdar — for coaching, workshops, speaking engagements or any questions about Let's Attune." />
+  <link rel="icon" type="image/png" href="assets/Lets Attune logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,WONK@0,9..144,500,0;0,9..144,600,0;0,9..144,700,0;1,9..144,500,0;1,9..144,600,0&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── CONTACT PAGE ────────────────────────────────────── */
+    .contact-hero {
+      background: var(--navy);
+      padding: clamp(3rem, 8vw, 5.5rem) 0 clamp(2.5rem, 6vw, 4rem);
+      text-align: center;
+    }
+    .contact-hero .eyebrow { color: var(--sage); }
+    .contact-hero h1 { color: #fff; max-width: 18ch; margin: 0.4rem auto 0; }
+    .contact-hero p { color: rgba(255,255,255,0.68); max-width: 44ch; margin: 0.9rem auto 0; font-size: 1rem; line-height: 1.7; }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 3rem;
+      align-items: start;
+      padding: clamp(2.5rem, 6vw, 4rem) 0;
+    }
+
+    /* Form card */
+    .contact-form-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 12px 40px rgba(29,53,87,0.1);
+      overflow: hidden;
+    }
+    .cfc-head {
+      background: var(--bg-sage);
+      padding: 1.4rem 1.8rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .cfc-head h2 { font-size: 1.1rem; color: var(--navy); margin: 0; }
+    .cfc-head p { font-size: 0.82rem; color: var(--muted); margin: 0.25rem 0 0; }
+    .cfc-body { padding: 1.8rem; display: flex; flex-direction: column; gap: 1.1rem; }
+
+    .cf { display: flex; flex-direction: column; gap: 0.32rem; }
+    .cf label { font-size: 0.76rem; font-weight: 500; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; }
+    .cf label .req { color: var(--coral); }
+    .cf input, .cf select, .cf textarea {
+      font-family: var(--ff-sans); font-size: 0.91rem; color: var(--navy);
+      background: var(--bg); border: 1.5px solid var(--line);
+      border-radius: 6px; padding: 0.62rem 0.9rem; outline: none; width: 100%;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .cf input::placeholder, .cf textarea::placeholder { opacity: 0.38; }
+    .cf input:focus, .cf select:focus, .cf textarea:focus {
+      border-color: var(--steel); background: #fff;
+      box-shadow: 0 0 0 3px rgba(69,123,157,0.1);
+    }
+    .cf textarea { resize: vertical; min-height: 110px; }
+    .cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    /* Radio group for preferred contact */
+    .cf-radio { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .cf-radio-opt {
+      display: flex; align-items: center; gap: 0.5rem;
+      background: var(--bg); border: 1.5px solid var(--line);
+      border-radius: 24px; padding: 0.42rem 0.9rem; cursor: pointer;
+      transition: border-color 0.15s, background 0.15s; font-size: 0.86rem; color: var(--navy);
+    }
+    .cf-radio-opt:has(input:checked) { border-color: var(--steel); background: #eaf2f7; }
+    .cf-radio-opt input { accent-color: var(--steel); width: 14px; height: 14px; }
+
+    .cf-divider { height: 1px; background: var(--line); }
+
+    .cf-submit {
+      font-family: var(--ff-sans); font-size: 0.95rem; font-weight: 600;
+      background: var(--coral); color: #fff; border: none;
+      border-radius: 30px; padding: 0.75rem 2rem; cursor: pointer;
+      transition: opacity 0.2s, transform 0.1s; width: 100%;
+    }
+    .cf-submit:hover { opacity: 0.88; }
+    .cf-submit:active { transform: scale(0.98); }
+    .cf-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    /* Thank you state */
+    .cf-thankyou {
+      display: none; flex-direction: column; align-items: center;
+      text-align: center; gap: 0.9rem; padding: 3rem 1.8rem 3.5rem;
+    }
+    .cf-thankyou.show { display: flex; }
+    .cf-thankyou h3 { font-family: var(--ff-serif); font-size: 1.5rem; color: var(--navy); }
+    .cf-thankyou p { font-size: 0.88rem; color: var(--muted); max-width: 320px; line-height: 1.65; }
+    .cf-thankyou .motto { font-family: var(--ff-serif); font-style: italic; color: var(--steel); font-size: 0.9rem; margin-top: 0.4rem; }
+
+    /* Sidebar */
+    .contact-aside { display: flex; flex-direction: column; gap: 1.4rem; }
+    .aside-card {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(29,53,87,0.07);
+      padding: 1.4rem 1.5rem;
+    }
+    .aside-card h4 { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--coral); margin-bottom: 0.7rem; }
+    .aside-card p, .aside-card a { font-size: 0.88rem; color: var(--muted); line-height: 1.6; text-decoration: none; }
+    .aside-card a:hover { color: var(--navy); }
+    .aside-card .contact-item { display: flex; align-items: flex-start; gap: 0.6rem; margin-bottom: 0.55rem; }
+    .aside-card .contact-item:last-child { margin-bottom: 0; }
+    .aside-card .contact-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+    .aside-qr { text-align: center; }
+    .aside-qr img { width: 120px; height: 120px; object-fit: contain; border-radius: 6px; }
+    .aside-qr p { font-size: 0.78rem; color: var(--muted); margin-top: 0.5rem; }
+    .aside-quote {
+      background: var(--navy); border-radius: 10px; padding: 1.4rem 1.5rem;
+    }
+    .aside-quote blockquote {
+      font-family: var(--ff-serif); font-style: italic;
+      color: rgba(255,255,255,0.88); font-size: 1rem; line-height: 1.65;
+      margin: 0 0 0.7rem;
+    }
+    .aside-quote cite { font-size: 0.76rem; color: var(--sage); font-style: normal; letter-spacing: 0.05em; }
+
+    @media (max-width: 860px) {
+      .contact-layout { grid-template-columns: 1fr; }
+      .contact-aside { order: -1; }
+      .cf-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announce">
+    <span class="announce-star">★</span>
+    <strong>Women's Reset and Reconnection Workshop</strong> starting soon... ·
+    <a href="workshops.html">Know more →</a>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <img src="assets/Lets Attune logo.png" alt="Let's Attune" />
+        <span class="name">Let's Attune</span>
+      </a>
+      <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+      <nav class="nav">
+        <a class="link" href="index.html">Home</a>
+        <a class="link" href="about.html">About</a>
+        <a class="link" href="workshops.html">Upcoming Event</a>
+        <a class="btn btn-primary active" href="contact.html">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="contact-hero" style="padding: 48px 0px 4px">
+    <div class="wrap">
+      <div class="eyebrow">Let's connect</div>
+      <h1 style="margin: 6px 243px 0px; width: 660px; font-size: 42px; height: 56px; white-space: nowrap">We'd love to hear from you</h1>
+      <p>Whether you have a question, want to explore coaching, or are curious about a workshop — reach out and we'll get back to you.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT LAYOUT -->
+  <section class="section band-white">
+    <div class="wrap">
+      <div class="contact-layout" style="padding: 34px 0px 44px">
+
+        <!-- FORM -->
+        <div class="contact-form-card">
+          <div class="cfc-head">
+            <h2>Send us a message</h2>
+            <p>We typically respond within 1–2 working days.</p>
+          </div>
+
+          <form id="contact-form" class="cfc-body" action="https://formspree.io/f/mgojvkwl" method="POST">
+            <input type="hidden" name="_subject" value="New Contact Form Submission — Let's Attune" />
+
+            <div class="cf-row">
+              <div class="cf">
+                <label>Full Name <span class="req">*</span></label>
+                <input type="text" name="full_name" placeholder="Your name" required />
+              </div>
+              <div class="cf">
+                <label>Phone / WhatsApp</label>
+                <input type="tel" name="phone" placeholder="+91 98765 43210" />
+              </div>
+            </div>
+
+            <div class="cf">
+              <label>Email Address <span class="req">*</span></label>
+              <input type="email" name="email" placeholder="you@example.com" required />
+            </div>
+
+            <div class="cf">
+              <label>What would you like to connect about? <span class="req">*</span></label>
+              <select name="topic" required>
+                <option value="">— Select a topic —</option>
+                <option>The upcoming workshop</option>
+                <option>1-on-1 coaching</option>
+                <option>Corporate / team workshops</option>
+                <option>Speaking engagement</option>
+                <option>General enquiry</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="cf">
+              <label>Your message <span class="req">*</span></label>
+              <textarea name="message" placeholder="Tell us what's on your mind — there's no wrong answer here." required></textarea>
+            </div>
+
+            <div class="cf">
+              <label>How did you hear about us?</label>
+              <select name="referral">
+                <option value="">— Select —</option>
+                <option>Instagram / Social Media</option>
+                <option>WhatsApp message / broadcast</option>
+                <option>A friend or colleague</option>
+                <option>Let's Attune website</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="cf">
+              <label>Preferred way to be contacted</label>
+              <div class="cf-radio">
+                <label class="cf-radio-opt"><input type="radio" name="preferred_contact" value="WhatsApp" />WhatsApp</label>
+                <label class="cf-radio-opt"><input type="radio" name="preferred_contact" value="Email" />Email</label>
+                <label class="cf-radio-opt"><input type="radio" name="preferred_contact" value="Phone call" />Phone call</label>
+              </div>
+            </div>
+
+            <div class="cf-divider"></div>
+
+            <button type="submit" class="cf-submit" id="cf-submit-btn">Send Message →</button>
+            <p style="font-size:0.72rem;color:var(--muted);text-align:center;margin-top:-0.5rem">Your details are safe with us and will never be shared.</p>
+          </form>
+
+          <!-- Thank You -->
+          <div class="cf-thankyou" id="cf-thankyou">
+            <div style="font-size:2.4rem">🌿</div>
+            <h3>Message received!</h3>
+            <p>Thank you for reaching out. Shilpa will get back to you within 1–2 working days. In the meantime, feel free to connect on WhatsApp.</p>
+            <a href="https://wa.me/918080166955" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:0.4rem">Message on WhatsApp →</a>
+            <div class="motto">EXPRESS · EXPLORE · EMPOWER · EVOLVE</div>
+          </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <aside class="contact-aside">
+
+          <div class="aside-card">
+            <h4>Direct contact</h4>
+            <div class="contact-item">
+              <span class="contact-icon">📱</span>
+              <div>
+                <a href="https://wa.me/918080166955" target="_blank" rel="noopener">+91 8080166955</a><br>
+                <span style="font-size:0.78rem">WhatsApp or call</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">✉️</span>
+              <a href="mailto:shilpa@letsattune.com">shilpa@letsattune.com</a>
+            </div>
+          </div>
+
+          <div class="aside-card aside-qr">
+            <h4>Scan to WhatsApp</h4>
+            <img src="assets/qr.png" alt="WhatsApp QR — Let's Attune" style="width: 320px; height: 220px" />
+            <p>Scan with your phone camera to open a WhatsApp chat directly</p>
+          </div>
+
+          <div class="aside-quote">
+            <blockquote>"You don't need to figure out everything alone. The first discovery call is free — you'll get a feel of coaching and what it could mean for you."</blockquote>
+            <cite>— Shilpa Jahagirdar, Founder, Let's Attune</cite>
+          </div>
+
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <div class="name">Let's Attune</div>
+          <p style="color:rgba(255,255,255,0.7)">Reflective, emotionally safe spaces to pause, understand yourself, and move forward with clarity.</p>
+          <img class="footer-qr" src="assets/qr.png" alt="WhatsApp QR — Let's Attune" />
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="workshops.html">Upcoming Event</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://wa.me/918080166955" target="_blank" rel="noopener">WhatsApp / Call</a><br>+91 8080166955</li>
+            <li><a href="mailto:shilpa@letsattune.com">shilpa@letsattune.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-motto">EXPRESS : EXPLORE : EMPOWER : EVOLVE</div>
+      <div class="footer-copy">© <span data-year>2026</span> Let's Attune · Shilpa Jahagirdar, PCC · ICF Certified</div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('cf-submit-btn');
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      try {
+        const res = await fetch(this.action, {
+          method: 'POST',
+          body: new FormData(this),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          this.style.display = 'none';
+          document.getElementById('cf-thankyou').classList.add('show');
+        } else {
+          btn.disabled = false;
+          btn.textContent = 'Send Message →';
+          alert('Something went wrong. Please try again or message us on WhatsApp.');
+        }
+      } catch(err) {
+        btn.disabled = false;
+        btn.textContent = 'Send Message →';
+        alert('Could not connect. Please check your internet and try again.');
+      }
+    });
+  </script>
+</body>
+</html>

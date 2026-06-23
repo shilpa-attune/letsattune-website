@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Workshop Registration — Let's Attune</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500,0;1,9..144,500,0;1,9..144,600,0&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #1d3557;
+      --steel:  #457b9d;
+      --coral:  #e63946;
+      --sage:   #abc9c9;
+      --bg:     #f3f7f6;
+      --bg-sage:#dbe8e6;
+      --white:  #ffffff;
+      --ink:    #1d3557;
+      --muted:  #5a6b7a;
+      --line:   #d8e3e1;
+      --ff-serif: 'Fraunces', Georgia, serif;
+      --ff-sans:  'Poppins', system-ui, sans-serif;
+      --radius: 6px;
+      --shadow: 0 14px 40px rgba(29,53,87,0.10);
+    }
+
+    body {
+      font-family: var(--ff-sans);
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 3rem 1.25rem 4rem;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      width: 100%;
+      max-width: 580px;
+      overflow: hidden;
+    }
+
+    /* Header band */
+    .card-header {
+      background: var(--navy);
+      padding: 2rem 2.4rem 1.6rem;
+      text-align: center;
+    }
+    .card-header .eyebrow {
+      font-family: var(--ff-serif);
+      font-style: italic;
+      color: var(--sage);
+      font-size: 0.95rem;
+      margin-bottom: 0.4rem;
+    }
+    .card-header h1 {
+      font-family: var(--ff-serif);
+      color: #fff;
+      font-size: 1.55rem;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+    .card-header .sub {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.82rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Progress bar */
+    .progress-wrap {
+      background: var(--bg-sage);
+      padding: 0.85rem 2.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .progress-bar {
+      flex: 1;
+      height: 4px;
+      background: var(--line);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--coral);
+      border-radius: 2px;
+      transition: width 0.4s ease;
+    }
+    .progress-label {
+      font-size: 0.74rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    /* Form body */
+    .form-body {
+      padding: 2rem 2.4rem;
+    }
+
+    .step { display: none; flex-direction: column; gap: 1.2rem; }
+    .step.active { display: flex; }
+
+    .step-title {
+      font-family: var(--ff-serif);
+      font-size: 1.1rem;
+      color: var(--navy);
+      margin-bottom: 0.2rem;
+    }
+
+    .field { display: flex; flex-direction: column; gap: 0.35rem; }
+    .field label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+    }
+    .field label .req { color: var(--coral); margin-left: 2px; }
+
+    .field input,
+    .field select,
+    .field textarea {
+      font-family: var(--ff-sans);
+      font-size: 0.92rem;
+      color: var(--ink);
+      background: var(--bg);
+      border: 1.5px solid var(--line);
+      border-radius: var(--radius);
+      padding: 0.65rem 0.9rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      width: 100%;
+    }
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--steel);
+      box-shadow: 0 0 0 3px rgba(69,123,157,0.12);
+      background: #fff;
+    }
+    .field textarea { resize: vertical; min-height: 90px; }
+
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    /* Radio / checkbox group */
+    .option-group { display: flex; flex-direction: column; gap: 0.5rem; }
+    .option-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+      background: var(--bg);
+      border: 1.5px solid var(--line);
+      border-radius: var(--radius);
+      padding: 0.7rem 0.9rem;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .option-item:has(input:checked) {
+      border-color: var(--steel);
+      background: #eaf2f7;
+    }
+    .option-item input[type="radio"],
+    .option-item input[type="checkbox"] {
+      width: 16px; height: 16px; margin-top: 2px; flex-shrink: 0;
+      accent-color: var(--steel);
+    }
+    .option-item span { font-size: 0.88rem; line-height: 1.4; }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: var(--line);
+      margin: 0.4rem 0;
+    }
+
+    /* Hint text */
+    .hint { font-size: 0.76rem; color: var(--muted); margin-top: -0.6rem; }
+
+    /* Buttons */
+    .btn-row {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 0.6rem;
+      align-items: center;
+    }
+    .btn {
+      font-family: var(--ff-sans);
+      font-size: 0.88rem;
+      font-weight: 500;
+      border: none;
+      border-radius: 30px;
+      padding: 0.65rem 1.6rem;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.1s;
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary { background: var(--coral); color: #fff; }
+    .btn-ghost {
+      background: transparent;
+      color: var(--muted);
+      border: 1.5px solid var(--line);
+    }
+    .btn-back { background: none; border: none; color: var(--muted); font-size: 0.82rem; cursor: pointer; padding: 0.5rem 0; text-decoration: underline; }
+
+    /* Success state */
+    .success-state {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1rem;
+      padding: 2.4rem 2.4rem 2.8rem;
+    }
+    .success-state.active { display: flex; }
+    .success-icon {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: #eaf7f0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem;
+    }
+    .success-state h2 { font-family: var(--ff-serif); font-size: 1.4rem; color: var(--navy); }
+    .success-state p { font-size: 0.88rem; color: var(--muted); max-width: 340px; line-height: 1.6; }
+
+    .spinner {
+      width: 28px; height: 28px;
+      border: 3px solid var(--line);
+      border-top-color: var(--coral);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @media (max-width: 480px) {
+      .field-row { grid-template-columns: 1fr; }
+      .form-body, .card-header { padding-left: 1.4rem; padding-right: 1.4rem; }
+      .progress-wrap { padding-left: 1.4rem; padding-right: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- Header -->
+  <div class="card-header">
+    <div class="eyebrow">Women's Reset and Reconnection Workshop</div>
+    <h1>Reserve Your Place</h1>
+    <div class="sub">24, 25 &amp; 26 July 2026 · 6:30pm–9:00pm IST · Online via Zoom</div>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-wrap">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:33%"></div></div>
+    <div class="progress-label" id="progressLabel">Step 1 of 3</div>
+  </div>
+
+  <!-- Form -->
+  <div class="form-body">
+
+    <!-- Step 1: About you -->
+    <div class="step active" id="step1">
+      <div class="step-title">About you</div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>First name <span class="req">*</span></label>
+          <input type="text" placeholder="e.g. Priya" />
+        </div>
+        <div class="field">
+          <label>Last name</label>
+          <input type="text" placeholder="e.g. Sharma" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Email address <span class="req">*</span></label>
+        <input type="email" placeholder="you@example.com" />
+      </div>
+
+      <div class="field">
+        <label>WhatsApp / mobile number <span class="req">*</span></label>
+        <input type="tel" placeholder="+91 98765 43210" />
+      </div>
+
+      <div class="field">
+        <label>City / country</label>
+        <input type="text" placeholder="e.g. Mumbai, India" />
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-primary" onclick="goTo(2)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- Step 2: Your situation -->
+    <div class="step" id="step2">
+      <div class="step-title">A little about where you are right now</div>
+
+      <div class="field">
+        <label>Which of these resonates most with you? <span class="req">*</span></label>
+        <div class="option-group">
+          <label class="option-item">
+            <input type="radio" name="situation" />
+            <span>I feel disconnected from myself despite managing life well on the outside</span>
+          </label>
+          <label class="option-item">
+            <input type="radio" name="situation" />
+            <span>I'm at a crossroads and unsure what comes next</span>
+          </label>
+          <label class="option-item">
+            <input type="radio" name="situation" />
+            <span>I've been putting everyone else first and need time for myself</span>
+          </label>
+          <label class="option-item">
+            <input type="radio" name="situation" />
+            <span>I just feel ready to pause, reflect, and reconnect</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>How did you hear about this workshop?</label>
+        <select>
+          <option value="">— Select —</option>
+          <option>Instagram / Social media</option>
+          <option>WhatsApp message</option>
+          <option>A friend or colleague</option>
+          <option>Let's Attune website</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-primary" onclick="goTo(3)">Continue →</button>
+        <button class="btn-back" onclick="goTo(1)">← Back</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Confirm -->
+    <div class="step" id="step3">
+      <div class="step-title">Anything you'd like to share?</div>
+
+      <div class="field">
+        <label>Is there anything specific you're hoping to get from this workshop?</label>
+        <textarea placeholder="Share as much or as little as you like — this helps Shilpa prepare a meaningful experience for you."></textarea>
+      </div>
+
+      <div class="field">
+        <label>Any questions or concerns before joining?</label>
+        <textarea placeholder="e.g. questions about the format, what to expect, etc." style="min-height:70px"></textarea>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="option-group">
+        <label class="option-item">
+          <input type="checkbox" />
+          <span>I understand this is a confidential space — no recordings will be made.</span>
+        </label>
+        <label class="option-item">
+          <input type="checkbox" />
+          <span>I agree to receive updates about this workshop via WhatsApp or email.</span>
+        </label>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-primary" onclick="goToSuccess()">Submit Registration</button>
+        <button class="btn-back" onclick="goTo(2)">← Back</button>
+      </div>
+    </div>
+
+    <!-- Success -->
+    <div class="success-state" id="successState">
+      <div class="success-icon">🌿</div>
+      <h2>One last step — payment!</h2>
+      <p>Your details are saved. We're taking you to our secure payment page to complete your registration.</p>
+      <div style="background:var(--bg-sage);border-radius:8px;padding:1rem 1.4rem;text-align:left;width:100%;max-width:320px">
+        <div style="font-size:0.72rem;color:var(--muted);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:0.3rem">You're paying for</div>
+        <div style="font-weight:600;color:var(--navy);font-size:0.95rem">Women's Reset &amp; Reconnection Workshop</div>
+        <div style="font-size:0.82rem;color:var(--muted);margin-top:0.2rem">24, 25 &amp; 26 July 2026 · Online via Zoom</div>
+        <div style="margin-top:0.7rem;padding-top:0.7rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:0.82rem;color:var(--muted)">Amount</span>
+          <span style="font-weight:600;color:var(--coral);font-size:1.05rem">₹ ____</span>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;margin-top:0.2rem">
+        <div class="spinner"></div>
+        <span style="font-size:0.76rem;color:var(--muted)">Redirecting to Razorpay…</span>
+      </div>
+      <p style="font-size:0.75rem;color:var(--muted)">
+        Not redirecting? <a href="#" onclick="window.location.href=RAZORPAY_URL" style="color:var(--steel)">Click here →</a>
+      </p>
+      <p style="font-family:'Fraunces',Georgia,serif;font-style:italic;color:var(--steel);font-size:0.9rem;margin-top:0.2rem">EXPRESS · EXPLORE · EMPOWER · EVOLVE</p>
+    </div>
+
+  </div><!-- /form-body -->
+</div>
+
+<script>
+  function goTo(n) {
+    document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+    document.getElementById('step' + n).classList.add('active');
+    const pct = [33, 66, 100][n - 1];
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressLabel').textContent = 'Step ' + n + ' of 3';
+  }
+  var RAZORPAY_URL = 'https://pages.razorpay.com/letsattune-workshop'; // ← replace with your real link
+
+  function goToSuccess() {
+    document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+    document.getElementById('successState').classList.add('active');
+    document.getElementById('progressFill').style.width = '100%';
+    document.getElementById('progressLabel').textContent = 'Almost there!';
+    setTimeout(() => {
+      window.location.href = RAZORPAY_URL;
+    }, 2800);
+  }
+</script>
+
+</body>
+</html>

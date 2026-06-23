@@ -42,15 +42,36 @@ Shilpa's personal page — bio, values, philosophy, modalities.
 
 ## workshops.html — Current Workshop
 Landing page for the Women's Reset & Reconnection Workshop (Jul 24–26 2026).
-This page gets swapped out whenever a new workshop runs.
+Nav label: "Upcoming Event". This page gets swapped out whenever a new workshop runs.
+
+**Sections:**
+1. Announcement bar + header (nav: Home, About, Upcoming Event, Contact Us → contact.html)
+2. Hero banner — workshop photo, title, dates, format, Join Now (opens modal) + Ask a Question (WhatsApp)
+3. Who it's for (white background) — 2 paragraphs
+4. Are you / Wouldn't you rather — comparison layout (sage background)
+5. What we explore — 4 questions + "Confidential Conversations" note (white background)
+6. Primary Facilitator — Shilpa (sage background), "Know More" → about.html
+7. Supporting Facilitator — Kalki (light sage #eef5f4), placeholder K avatar
+8. Reserve your place CTA — navy band, opens modal, dynamic price note
+9. Footer (nav: Upcoming Event, Contact Us)
+
+**Modal registration form** (id="reg-modal", triggered by all Register/Join buttons):
+- Fields: Full Name*, Contact No.*, Email*, Age Group* (radio: Under 30 / 31–45 / 46–60 / Above 60), About You (checkboxes), What resonates* (radio, 8 options), How did you find out (dropdown)
+- Formspree: https://formspree.io/f/mgojvkwl
+- Dynamic pricing: ₹1,999 early bird until 10 July → ₹2,999 after
+- After submit: thank-you screen with UPI QR (assets/upi-qr.svg) + payment instructions
+
+---
+
+## contact.html — Contact Us (NEW page)
+Get in touch page — general enquiries, coaching, corporate, speaking.
 
 **Sections:**
 1. Announcement bar + header
-2. Hero banner — workshop photo, title, dates, format (online/Zoom), Join Now + Ask a Question buttons (white text on both)
-3. Facts strip — date, time, platform, seats
-4. Who it's for
-5. Are you / Wouldn't you rather — comparison layout
-6. What we explore — topics covered
-7. Schedule — day-by-day breakdown
-8. Register CTA — Google Form + WhatsApp
-9. Footer
+2. Navy hero — "We'd love to hear from you"
+3. Two-column layout: contact form (left) + sidebar (right)
+   - Form fields: Full Name*, Phone, Email*, Topic* (dropdown), Message*, Referral, Preferred contact (radio: WhatsApp/Email/Phone)
+   - Formspree: https://formspree.io/f/mgojvkwl
+   - After submit: thank-you message + WhatsApp button
+   - Sidebar: direct contact details, WhatsApp QR scan card, Shilpa quote (navy card)
+4. Footer

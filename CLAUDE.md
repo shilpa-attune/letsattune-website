@@ -100,15 +100,21 @@ Sampled from the brand palette file (`assets/Lets attune pallet.jpeg`) — CSS v
 - Blog links placeholder
 - Let's Connect CTA + footer
 
-### workshops.html — Current workshop
+### workshops.html — Current workshop (nav label: "Upcoming Event")
 - Women's Reset & Reconnection Workshop (Jul 24–26 2026). Hardcoded but easy to swap.
-- Facts strip, who-it's-for, "are you / wouldn't you rather" compare, what-we-explore,
-  schedule, register CTA → Google Form + WhatsApp.
+- Who-it's-for, "are you / wouldn't you rather" compare, what-we-explore, Primary Facilitator (Shilpa), Supporting Facilitator (Kalki), reserve CTA.
+- Registration via modal pop-up form → Formspree. Dynamic pricing: ₹1,999 until 10 July, ₹2,999 after.
+
+### contact.html — Contact Us (NEW)
+- Get in touch form (name, phone, email, topic, message) → Formspree
+- Sidebar: direct contact, WhatsApp QR, Shilpa quote
 
 ## Booking / contact
-- Primary CTA → Google Form (`forms.gle/p1m3mecHvxKqkyVN9`)
-- Secondary → WhatsApp `wa.me/918080166955` · email `shilpa@letsattune.com`
-- No Calendly.
+- Workshop registration → modal form → Formspree (`formspree.io/f/mgojvkwl`) → shilpa@letsattune.com
+- General contact → contact.html (also Formspree, same endpoint)
+- WhatsApp `wa.me/918080166955` · email `shilpa@letsattune.com`
+- No Calendly. Google Form link (forms.gle/p1m3mecHvxKqkyVN9) no longer used in nav.
+- Payment: UPI QR (assets/upi-qr.svg) shown after registration. ₹1,999 early bird until 10 July 2026, ₹2,999 after.
 
 ## Effects Used
 - Typewriter hero headline · sticky shrinking glass header · scroll fade-ins (IntersectionObserver)

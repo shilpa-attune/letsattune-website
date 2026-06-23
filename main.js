@@ -56,35 +56,4 @@
   /* Footer year */
   var yr = document.querySelector('[data-year]');
   if (yr) yr.textContent = new Date().getFullYear();
-
-  /* Workshop registration form — AJAX submit → show success + QR */
-  var wkForm = document.getElementById('wk-form');
-  var wkSuccess = document.getElementById('wk-success');
-  if (wkForm && wkSuccess) {
-    wkForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var btn = wkForm.querySelector('[type="submit"]');
-      btn.textContent = 'Sending…';
-      btn.disabled = true;
-      fetch(wkForm.action, {
-        method: 'POST',
-        body: new FormData(wkForm),
-        headers: { 'Accept': 'application/json' }
-      }).then(function (res) {
-        if (res.ok) {
-          wkForm.style.display = 'none';
-          wkSuccess.style.display = 'block';
-          wkSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        } else {
-          btn.textContent = 'Register Now →';
-          btn.disabled = false;
-          alert('Something went wrong — please try again or message us on WhatsApp.');
-        }
-      }).catch(function () {
-        btn.textContent = 'Register Now →';
-        btn.disabled = false;
-        alert('No internet connection — please check and try again.');
-      });
-    });
-  }
 })();
