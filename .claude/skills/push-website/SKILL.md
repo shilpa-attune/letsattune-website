@@ -1,6 +1,6 @@
 ---
 name: push-website
-description: Publish the website — save all current changes and put them live on arise.letsattune.com. Use whenever Shilpa says things like "publish", "make it live", "save my changes", "push the website", "update the site", "put this online", or "/push-website".
+description: Publish the website — save all current changes and put them live on letsattune.com. Use whenever Shilpa says things like "publish", "make it live", "save my changes", "push the website", "update the site", "put this online", or "/push-website".
 ---
 
 # Publish the website
@@ -22,7 +22,7 @@ Do this whole flow yourself, in plain language, without asking her to run any co
      `Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>`
 5. Publish: `git push origin main`.
 6. Confirm in plain language, e.g.:
-   > ✅ Done! Your changes are saved and will appear on your website (arise.letsattune.com) in about 30 seconds. Refresh the page after a minute to see them.
+   > ✅ Done! Your changes are saved and will appear on your website (letsattune.com) in about 30 seconds. Refresh the page after a minute to see them.
 
 ## Notes
 

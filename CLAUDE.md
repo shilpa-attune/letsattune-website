@@ -22,7 +22,7 @@ will do the rest.
 
 ## Overview
 Static HTML website for Shilpa Jahagirdar's life coaching business **Let's Attune**.
-Hosted on GitHub Pages at `arise.letsattune.com` (custom subdomain).
+Hosted on GitHub Pages at `letsattune.com` (custom domain).
 
 ## Repo
 - GitHub account: `shilpa-attune`
@@ -32,7 +32,7 @@ Hosted on GitHub Pages at `arise.letsattune.com` (custom subdomain).
 
 ## Hosting
 - Platform: GitHub Pages (free)
-- Custom domain: `arise.letsattune.com`
+- Custom domain: `letsattune.com`
 - SSL: Enforced via GitHub Pages (Let's Encrypt)
 - Deploy: automatic on push to `main` branch (~30 seconds)
 
@@ -63,7 +63,7 @@ Sampled from the brand palette file (`assets/Lets attune pallet.jpeg`) — CSS v
 ├── workshops.html      # Current workshop landing page
 ├── styles.css          # Shared design system
 ├── main.js             # Shared behaviour (header, nav, reveal, typewriter)
-├── CNAME               # Custom domain (arise.letsattune.com)
+├── CNAME               # Custom domain (letsattune.com)
 ├── CLAUDE.md           # This file
 ├── CONTEXT.md          # Brand & content vocabulary (source of truth for copy)
 ├── docs/adr/           # Architecture decision records

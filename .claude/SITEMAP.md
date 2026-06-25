@@ -1,6 +1,6 @@
 # Site Map
 
-Live site: https://arise.letsattune.com
+Live site: https://letsattune.com
 
 ---
 
