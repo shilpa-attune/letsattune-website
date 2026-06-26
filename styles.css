@@ -310,6 +310,14 @@ a { color: inherit; text-decoration: none; }
   .cred-row, .coach-bio .btnrow, .tagset { justify-content: center; }
 }
 
+/* ── FACILITATOR GRID ─────────────────────────────────────── */
+.facilitator-grid { display: grid; grid-template-columns: 200px 1fr; gap: 2.4rem; align-items: center; }
+@media (max-width: 680px) {
+  .facilitator-grid { grid-template-columns: 1fr; text-align: center; }
+  .facilitator-photo { margin: 0 auto; }
+  .kalki-photo { width: 140px !important; height: 140px !important; }
+}
+
 /* ── WORKSHOPS PAGE ───────────────────────────────────────── */
 /* Blurred cover photo (faces not identifiable) with workshop details overlaid */
 .wk-cover { position: relative; min-height: clamp(300px, 50vh, 440px); display: flex; align-items: center; overflow: hidden; color: #fff; }
@@ -365,8 +373,6 @@ a { color: inherit; text-decoration: none; }
   .step { flex: none; width: 100%; }
   .step-arrow { display: none; }
 
-  /* Kalki photo — shrink on very small screens */
-  .kalki-photo { width: 140px !important; height: 140px !important; }
 }
 
 @media (prefers-reduced-motion: reduce) {
